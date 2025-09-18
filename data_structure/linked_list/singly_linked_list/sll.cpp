@@ -25,4 +25,12 @@ class SLL{
             this->tail = nullptr;
             this->length = 0;
         }
+
+        ~SLL(){
+           while (this->head != nullptr){
+                Node* temp = this->head;
+                this->head = this->head->next;
+                delete temp;
+            }
+        }
 };
