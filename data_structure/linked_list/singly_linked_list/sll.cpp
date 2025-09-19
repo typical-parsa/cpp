@@ -142,4 +142,25 @@ class SLL{
             }
         }
 
+        void insert_node(int index, int value){
+            if (index < 0 || index > this->length){
+                cout << "Invalid index!" << endl;
+                return;
+            }else if (index == 0){
+                this->prepend_node(value);
+                return;
+            }else if (index == this->length){
+                this->append_node(value);
+                return;
+            }else{
+                Node* new_node = new Node(value);
+                Node* previous_node = this->get_node_by_index(index - 1);
+                if (previous_node != nullptr){
+                    new_node->next = previous_node->next;
+                    previous_node->next = new_node;
+                    this->length++;
+                }
+            }
+        }
+
 };
