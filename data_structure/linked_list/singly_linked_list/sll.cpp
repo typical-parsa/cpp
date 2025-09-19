@@ -94,4 +94,21 @@ class SLL{
             }
             this->length++;
         }
+
+        void delete_first_node(){
+            if (this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }
+            Node* temp_node = this->head ;
+            if (this->length == 1){
+                this->head = nullptr;
+                this->tail = nullptr;
+            }else{
+                this->head = this->head->next;
+            }
+            delete temp_node;
+            this->length--;
+        }
+
 };
