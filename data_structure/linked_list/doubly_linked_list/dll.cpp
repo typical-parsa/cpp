@@ -50,4 +50,17 @@ class DLL{
                 cout << "Null" << endl;
             }
         }
+
+        void append_node(int value){
+            Node* new_node = new Node(value);
+            if (this->lenght == 0){
+                this->head = nullptr;
+                this->tail = nullptr;
+            }else{
+                this->tail->next = new_node;
+                new_node->previous = this->tail;
+                this->tail = new_node;
+            }
+            this->lenght++;
+        }
 };
