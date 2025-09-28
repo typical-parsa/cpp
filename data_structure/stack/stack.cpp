@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -22,6 +23,18 @@ class STACK{
         STACK(){
             this->top = nullptr;
             this->height = 0;
+        }
+
+        void push_node(int value){
+            if (this->height == 0){
+                cout << "Stack is empty!" << endl;
+                return;
+            }else{
+                Node* new_node = new Node(value);
+                new_node->next = this->top;
+                this->top = new_node;
+                this->height++;
+            }
         }
 };
 
