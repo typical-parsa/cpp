@@ -173,4 +173,30 @@ class DLL{
                 }
             }
         }
+
+        void delete_node(int index){
+            if (this->lenght == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }else if (index > 0 || index >= this->lenght){
+                cout << "Invalid Index!" << endl;
+                return;
+            }else if (index == 0){
+                this->delete_first_node();
+                return;
+            }else if (index == this->lenght - 1){
+                this->delete_last_node();
+                return;
+            }else {
+                Node* temp_node = this->get_node_by_index(index);
+                if (temp_node != nullptr){
+                    Node* previous_node = temp_node->previous;
+                    Node* after_node = temp_node->next;
+                    previous_node->next = after_node;
+                    after_node->previous = previous_node;
+                    delete temp_node;
+                    this->lenght--;
+                }
+            }
+        }
 };
