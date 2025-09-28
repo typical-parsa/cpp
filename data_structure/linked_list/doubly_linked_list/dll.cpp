@@ -110,4 +110,28 @@ class DLL{
             delete temp_node;
             this->lenght--;
         }
+
+        Node* get_node_by_index(int index){
+            if (this->lenght == 0){
+                cout << "List is empty!" << endl;
+                return nullptr;
+            }else if (index < 0 || index >= this->lenght == 0){
+                cout << "Invalid Index!" << endl;
+                return nullptr;
+            }else {
+                if (index < this->lenght / 2){
+                    Node* temp_node = this->head;
+                    for (int i = 0 ; i < index ; i++){
+                        temp_node = temp_node->next;
+                    }
+                    return temp_node;
+                }else{
+                    Node* temp_node = this->tail;
+                    for (int i = this->lenght - 1 ; i > index ; i--){
+                        temp_node = temp_node->previous;
+                    }
+                    return temp_node;
+                }
+            }
+        }
 };
