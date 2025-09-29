@@ -8,3 +8,16 @@ class Node{
         Node* next;
 };
 
+class QUEUE{
+    private:
+        Node* front;
+        Node* rear;
+        int length;
+
+    public:
+        QUEUE(){
+            this->front = nullptr;
+            this->rear = nullptr;
+            this->length = 0;
+        }
+};
