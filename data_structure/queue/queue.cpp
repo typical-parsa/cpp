@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -33,8 +34,27 @@ class QUEUE{
                 this->rear = new_node;
             }else{
                 this->rear->next = new_node;
-               this->rear = new_node;
+                this->rear = new_node;
             }
             this->length++;
+        }
+
+        int dequeue_node(){
+            if (this->length == 0){
+                cout << "Queue is empty!" << endl;
+                return INT_MIN;
+            }else{
+                Node* temp_node = this->front;
+                int dequeued_value = temp_node->value;
+                if (this->length == 1){
+                    this->front = nullptr;
+                    this->rear = nullptr;
+                }else{
+                    this->front = this->front->next;
+                }
+                delete temp_node;
+                this->length--;
+                return dequeued_value;
+            }
         }
 };
