@@ -25,6 +25,14 @@ class STACK{
             this->height = 0;
         }
 
+        ~STACK(){
+            while(this->top != nullptr){
+                Node* temp_node = this->top;
+                this->top = this->top->next;
+                delete temp_node;
+            }
+        }
+
         void push_node(int value){
             Node* new_node = new Node(value);
             new_node->next = this->top;
@@ -44,7 +52,7 @@ class STACK{
             }else{
                 this->top = this->top->next;
             }
-            this->height++;
+            this->height--;
             delete temp_node;
             return popped_value;
         }
