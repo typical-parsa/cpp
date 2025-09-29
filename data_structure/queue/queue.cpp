@@ -27,6 +27,14 @@ class QUEUE{
             this->length = 0;
         }
 
+        ~QUEUE(){
+            while (this->front != nullptr){
+                Node* temp_node = this->front;
+                this->front = this->front->next;
+                delete temp_node;
+            }
+        }
+
         void enqueue_node(int value){
             Node* new_node = new Node(value);
             if (this->length == 0){
