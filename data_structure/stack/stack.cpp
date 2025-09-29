@@ -40,6 +40,20 @@ class STACK{
             this->height++;
         }
 
+        void print_stack(){
+            if (this->height == 0){
+                cout << "Stack is empty!" << endl;
+                return;
+            }else{
+                cout << "Stack Items: " << endl;
+                Node* temp_node = this->top;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << "|" << endl;
+                    temp_node = temp_node->next;
+                }
+            }
+        }
+
         int pop_node(){
             if (this->height == 0){
                 cout << "Stack is empty!" << endl;
@@ -57,4 +71,3 @@ class STACK{
             return popped_value;
         }
 };
-
