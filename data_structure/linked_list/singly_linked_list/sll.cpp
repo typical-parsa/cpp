@@ -67,12 +67,12 @@ class SLL{
                 return;
             }
             Node* temp_node = this->head;
-            if (this->length == 1){
+            if(this->length == 1){
                 this->head = nullptr;
                 this->tail = nullptr;
             }else{
                 Node* previous_node = this->head;
-                while (temp_node->next != nullptr){
+                while(temp_node->next != nullptr){
                     previous_node = temp_node;
                     temp_node = temp_node->next;
                 }
@@ -81,5 +81,17 @@ class SLL{
             }
             this->length--;
             delete temp_node;
+        }
+
+        void prepend_node(int value){
+            Node* new_node = new Node(value);
+            if(this->length == 0){
+                this->head = new_node;
+                this->tail = new_node;
+            }else{
+                new_node->next = this->head;
+                this->head = new_node;
+            }
+            this->length++;
         }
 };
