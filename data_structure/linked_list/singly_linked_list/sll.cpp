@@ -26,6 +26,14 @@ class SLL{
             this->length = 0;
         }
 
+        ~SLL(){
+            while(this->head != nullptr){
+                Node* temp_node = this->head;
+                this->head = this->head->next;
+                delete temp_node;
+            }
+        }
+
         void print_list(){
             if (this->length == 0){
                 cout << "List is empty!" << endl;
@@ -40,4 +48,6 @@ class SLL{
                 cout << " null" << endl;
             }
         }
+
+
 };
