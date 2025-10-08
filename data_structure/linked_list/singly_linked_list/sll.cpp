@@ -188,4 +188,23 @@ class SLL{
                 }
             }
         }
+
+        void reverse_list(){
+            if(this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }else{
+                Node* current_node = this->head;
+                Node* before_node = nullptr;
+                Node* after_node = nullptr;
+                this->head = this->tail;
+                this->tail = current_node;
+                while(current_node != nullptr){
+                    after_node = current_node->next;
+                    current_node->next = before_node;
+                    before_node = current_node;
+                    current_node = after_node;
+                }
+            }
+        }
 };
