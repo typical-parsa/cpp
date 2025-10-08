@@ -145,13 +145,13 @@ class SLL{
         }
 
         void insert_node(int index, int value){
-            if(index < 0 || index >= this->length){
+            if(index < 0 || index > this->length){
                 cout << "Invalid Index!" << endl;
                 return;
             }if(index == 0){
                 this->prepend_node(value);
                 return;
-            }else if (index == this->length - 1){
+            }else if (index == this->length){
                 this->append_node(value);
                 return;
             }else{
@@ -161,6 +161,30 @@ class SLL{
                     new_node->next = previous_node->next;
                     previous_node->next = new_node;
                     this->length++;
+                }
+            }
+        }
+
+        void delete_node(int index){
+            if(this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }else if(index < 0 || index >= this->length){
+                cout << "Invalid Index!" << endl;
+                return;
+            }else if(index == 0){
+                this->delete_first_node();
+                return;
+            }else if(index == this->length){
+                this->delete_last_node();
+                return;
+            }else{
+                Node* previous_node = this->get_node_by_index(index - 1);
+                if(previous_node != nullptr){
+                    Node* temp_node = previous_node->next;
+                    previous_node->next = temp_node->next;
+                    this->length--;
+                    delete temp_node;
                 }
             }
         }
