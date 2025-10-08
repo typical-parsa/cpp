@@ -126,4 +126,21 @@ class SLL{
                 return temp_node;
             }
         }
+
+        void set_node_value(int index, int value){
+            if(this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }else if(index < 0 || index >= this->length){
+                cout << "Invalid Index!" << endl;
+                return;
+            }else{
+                Node* temp_node = this->get_node_by_index(index);
+                if(temp_node != nullptr){
+                    temp_node->value = value;
+                }else{
+                    cout << "Something went wrong!" << endl;
+                }
+            }
+        }
 };
