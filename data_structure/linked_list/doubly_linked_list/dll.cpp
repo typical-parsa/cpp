@@ -27,4 +27,12 @@ class DLL{
             this->tail = nullptr;
             this->length = 0;
         }
+
+        ~DLL(){
+            while(this->head != nullptr){
+                Node* temp_node = this->head;
+                this->head = this->head->next;
+                delete temp_node;
+            }
+        }
 };
