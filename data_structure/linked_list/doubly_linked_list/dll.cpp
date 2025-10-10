@@ -63,4 +63,21 @@ class DLL{
             }
             this->length++;
         }
+
+        void delete_last_node(){
+            if(this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }
+            Node* temp_node = this->tail;
+            if(this->length == 1){
+                this->head = nullptr;
+                this->tail = nullptr;
+            }else{
+                this->tail = this->tail->previous;
+                this->tail->next = nullptr;
+            }
+            delete temp_node;
+            this->length--;
+        }
 };
