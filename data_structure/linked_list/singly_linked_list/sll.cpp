@@ -175,7 +175,7 @@ class SLL{
             }else if(index == 0){
                 this->delete_first_node();
                 return;
-            }else if(index == this->length){
+            }else if(index == this->length - 1){
                 this->delete_last_node();
                 return;
             }else{
