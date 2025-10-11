@@ -150,4 +150,28 @@ class DLL{
             }
         }
 
+        void insert_node(int index, int value){
+            if(index < 0 || index > this->length){
+                cout << "Invalid Index!" << endl;
+                return;
+            }else if(index == 0){
+                this->prepend_node(value);
+                return;
+            }else if(index == this->length){
+                this->append_node(value);
+                return;
+            }else{
+                Node* previous_node = this->get_node_by_index(index - 1);
+                if(previous_node != nullptr){
+                    Node* new_node = new Node(value);
+                    Node* after_node = previous_node->next;
+                    previous_node->next = new_node;
+                    new_node->previous = previous_node;
+                    new_node->next = after_node;
+                    after_node->previous = new_node;
+                    this->length++;
+                }
+            }
+        }
+
 };
