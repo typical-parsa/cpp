@@ -188,7 +188,7 @@ class DLL{
                 this->delete_last_node();
                 return;
             }else{
-                Node* previous_node = this->get_node_by_index(index);
+                Node* previous_node = this->get_node_by_index(index - 1);
                 if(previous_node != nullptr){
                     Node* temp_node = previous_node->next;
                     Node* after_node = temp_node->next;
@@ -199,9 +199,8 @@ class DLL{
                 }
             }
         }
-
 };
 
 int main(){
-    
+
 }
