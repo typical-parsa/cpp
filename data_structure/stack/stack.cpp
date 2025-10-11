@@ -32,4 +32,11 @@ class STACK{
                 delete temp_node;
             }
         }
+
+        void push_node(int value){
+            Node* new_node = new Node(value);
+            new_node->next = this->top;
+            this->top = new_node;
+            this->height++;
+        }
 };
