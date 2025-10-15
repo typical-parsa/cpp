@@ -14,3 +14,19 @@ class Node{
             this->next = nullptr;
         }
 };
+
+class HT{
+    private:
+        int size;
+        Node** DataMap;
+
+    public:
+        HT(int table_size){
+            this->size = size;
+            this->DataMap = new Node*[size];
+            for(int i = 0 ; i < size ; i++){
+                DataMap[i] = nullptr;
+            }
+
+        }
+};
