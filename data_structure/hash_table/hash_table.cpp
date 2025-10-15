@@ -8,7 +8,7 @@ class Node{
         string key;
         Node* next;
 
-        Node(int value){
+        Node(string key, int value){
             this->value = value;
             this->key = key;
             this->next = nullptr;
@@ -50,5 +50,19 @@ class HT{
                 hash_value += (int(key[i]) * 31) % this->size;
             }
             return hash_value;
+        }
+
+        void set_value(string key, int value){
+            int space_address = this->hash_function(key);
+            Node* new_node = new Node(key, value);
+            if(this->DataMap[space_address] == nullptr){
+                this->DataMap[space_address] = new_node;
+            }else{
+                Node* temp_node = this->DataMap[space_address];
+                while(temp_node != nullptr){
+                    temp_node = temp_node->next;
+                }
+                temp_node->next = new_node;
+            }
         }
 };
