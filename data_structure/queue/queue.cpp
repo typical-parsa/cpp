@@ -34,4 +34,16 @@ class QUEUE{
                 delete temp_node;
             }
         }
+
+        void enqueue(int value){
+            Node* new_node = new Node(value);
+            if(this->length == 0){
+                this->front = new_node;
+                this->rear = new_node;
+            }else{
+                this->rear->next = new_node;
+                this->rear = new_node;
+            }
+            this->length++;
+        }
 };
