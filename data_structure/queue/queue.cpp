@@ -29,10 +29,11 @@ class QUEUE{
 
         ~QUEUE(){
             while(this->front != nullptr){
-                Node* temp_node = this->rear;
-                this->rear = this->rear->next;
+                Node* temp_node = this->front;
+                this->front = this->front->next;
                 delete temp_node;
             }
+            this->rear = nullptr;
         }
 
         void print_queue(){
@@ -67,7 +68,7 @@ class QUEUE{
                 return INT_MIN;
             }
             Node* dequeued_node = this->front;
-            int dequequeued_value = dequeued_node->value;
+            int dequeued_value = dequeued_node->value;
             if(this->length == 1){
                 this->front = nullptr;
                 this->rear = nullptr;
@@ -76,7 +77,7 @@ class QUEUE{
             }
             this->length--;
             delete dequeued_node;
-            return dequequeued_value;
+            return dequeued_value;
         }
 };
 
