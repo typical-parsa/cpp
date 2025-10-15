@@ -43,4 +43,12 @@ class HT{
                 }
             }
         }
+
+        int hash_function(string key){
+            int hash_value = 0;
+            for(int i = 0 ; i < key.length(); i++){
+                hash_value += (int(key[i]) * 31) % this->size;
+            }
+            return hash_value;
+        }
 };
