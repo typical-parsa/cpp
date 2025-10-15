@@ -24,9 +24,23 @@ class HT{
         HT(int table_size){
             this->size = size;
             this->DataMap = new Node*[size];
+            this->DataMap = new Node*[size];
+            this->DataMap = new Node*[size];
             for(int i = 0 ; i < size ; i++){
                 DataMap[i] = nullptr;
             }
+        }
 
+        void print_table(){
+            for(int i = 0; i < this->size; i++) {
+                cout << i << ":" << endl;
+                if(this->DataMap[i]) {
+                    Node* temp_node = DataMap[i];
+                    while (temp_node != nullptr) {
+                        cout << "   {" << temp_node->key << ", " << temp_node->value << "}" << endl;
+                        temp_node = temp_node->next;
+                    }
+                }
+            }
         }
 };
