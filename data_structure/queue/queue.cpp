@@ -35,7 +35,7 @@ class QUEUE{
             }
         }
 
-        void enqueue(int value){
+        void enqueue_node(int value){
             Node* new_node = new Node(value);
             if(this->length == 0){
                 this->front = new_node;
@@ -45,5 +45,23 @@ class QUEUE{
                 this->rear = new_node;
             }
             this->length++;
+        }
+
+        int dequeue_node(){
+            if(this->length == 0){
+                cout << "Queue is empty!" << endl;
+                return INT_MIN;
+            }
+            Node* dequeued_node = this->front;
+            int dequequeued_value = dequeued_node->value;
+            if(this->length == 1){
+                this->front = nullptr;
+                this->rear = nullptr;
+            }else{
+                this->front = this->front->next;
+            }
+            this->length--;
+            delete dequeued_node;
+            return dequequeued_value;
         }
 };
