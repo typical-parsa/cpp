@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -64,5 +65,18 @@ class HT{
                 }
                 temp_node->next = new_node;
             }
+        }
+
+        int get_value(string key){
+            int space_address = this->hash_function(key);
+            Node* temp_node = this->DataMap[space_address];
+            while(temp_node != nullptr){
+                if(temp_node->key == key){
+                    return temp_node->value;
+                }else{
+                    temp_node = temp_node->next;
+                }
+            }
+            return INT_MIN;
         }
 };
