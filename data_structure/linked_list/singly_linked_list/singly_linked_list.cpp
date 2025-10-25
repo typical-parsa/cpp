@@ -34,6 +34,20 @@ class SLL{
             }
         }
 
+        void print_list(){
+            if (this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }else{
+                Node* temp_node = this->head;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << " ";
+                    temp_node = temp_node->next;
+                }
+                cout << endl;
+            }
+        }
+
         bool append_node(int value){
             Node* new_node = new Node(value);
             if (this->length == 0){
