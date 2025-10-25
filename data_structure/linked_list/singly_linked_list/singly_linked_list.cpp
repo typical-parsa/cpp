@@ -110,6 +110,7 @@ class SLL{
                 this->head = this->head->next;
             }
             this->length--;
+            delete temp_node;
             return true;
         }
 };
