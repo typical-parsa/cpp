@@ -33,4 +33,16 @@ class SLL{
                 delete temp_node;
             }
         }
+
+        bool append_node(int value){
+            Node* new_node = new Node(value);
+            if (this->length == 0){
+                this->head = new_node;
+                this->tail = new_node;
+            }else{
+                this->tail->next = new_node;
+                this->tail = new_node;
+            }
+            this->length++;
+        }
 };
