@@ -113,4 +113,20 @@ class SLL{
             delete temp_node;
             return true;
         }
+
+        Node* get_node_by_index(int index){
+            if (this->length == 0){
+                cout << "List is empty!" << endl;
+                return nullptr;
+            }else if (index < 0 || index >= this->length){
+                cout << "Invalid Index! " << endl;
+                return nullptr;
+            }else{
+                Node* temp_node = this->head;
+                for (int i = 0 ; i < index ; i++){
+                    temp_node = temp_node->next;
+                }
+                return temp_node;
+            }
+        }
 };
