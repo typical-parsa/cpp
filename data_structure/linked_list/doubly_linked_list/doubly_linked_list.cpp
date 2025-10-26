@@ -155,4 +155,29 @@ class DLL{
                 }
             }
         }
+
+        bool insert_node(int index, int value){
+            if (index < 0 || index > this->length){
+                cout << "Invalid Index!" << endl;
+                return false;
+            }else if (index == 0){
+                return this->prepend_node(value);
+            }else if (index == this->length){
+                return this->append_node(value)
+            }else{
+                Node* previous_node = this->get_node_by_index(index - 1);
+                if (previous_node != nullptr){
+                    Node* new_node = new Node(value);
+                    Node* after_node = previous_node->next;
+                    new_node->before = previous_node;
+                    previous_node->next = new_node;
+                    new_node->next = after_node;
+                    after_node->before = new_node;
+                    this->length++;
+                }else{
+                    cout << "Something went wrong!" << endl;
+                    return false;
+                }
+            }
+        }
 };
