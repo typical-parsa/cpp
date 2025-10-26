@@ -35,4 +35,17 @@ class DLL{
                 delete temp_node;
             }
         }
+
+        void print_list(){
+            if (this->length == 0){
+                cout << "List is empty!" << endl;
+            }else{
+                Node* temp_node = this->head;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << " ";
+                    temp_node = temp_node->next;
+                }
+                cout << endl;
+            }
+        }
 };
