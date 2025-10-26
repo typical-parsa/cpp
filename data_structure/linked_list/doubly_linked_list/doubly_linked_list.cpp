@@ -163,7 +163,7 @@ class DLL{
             }else if (index == 0){
                 return this->prepend_node(value);
             }else if (index == this->length){
-                return this->append_node(value)
+                return this->append_node(value);
             }else{
                 Node* previous_node = this->get_node_by_index(index - 1);
                 if (previous_node != nullptr){
@@ -209,3 +209,7 @@ class DLL{
             }
         }
 };
+
+int main(){
+    
+}
