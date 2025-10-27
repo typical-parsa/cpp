@@ -34,4 +34,17 @@ class Queue{
                 delete temp_node;
             }
         }
+
+        void print_queue(){
+            if (this->length == 0){
+                cout << "Queue is empty!" << endl;
+                return;
+            }else{
+                Node* temp_node = this->front;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << " ";
+                }
+                cout << endl;
+            }
+        }
 };
