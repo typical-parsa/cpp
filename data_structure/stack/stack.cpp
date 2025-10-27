@@ -41,6 +41,7 @@ class Stack{
                 Node* temp_node = this->top;
                 while (temp_node != nullptr){
                     cout << temp_node->value << endl;
+                    temp_node = temp_node->next;
                 }
             }
         }
@@ -50,6 +51,7 @@ class Stack{
             new_node->next = this->top;
             this->top = new_node;
             this->height++;
+            return true;
         }
 
         int pop_node(){
@@ -59,11 +61,7 @@ class Stack{
             }
             Node* temp_node = this->top;
             int popped_value = temp_node->value;
-            if (this->height == 0){
-                this->top = nullptr;
-            }else{
-                this->top = this->top->next;
-            }
+            this->top = this->top->next;
             this->height--;
             delete temp_node;
             return popped_value;
