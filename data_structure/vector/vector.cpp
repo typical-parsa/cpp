@@ -47,10 +47,20 @@ class Vector{
 
         bool pop_element(){
             if (this->length == 0){
+                cout << "Vector is empty!" << endl;
                 return false;
             }else{
                 this->length--;
                 return true;
+            }
+        }
+
+        int at(int index){
+            if (this->length == 0){
+                cout << "Vector is empty!" << endl;
+                return INT_MIN;
+            }else{
+                return this->array_under_hood[index];
             }
         }
 };
