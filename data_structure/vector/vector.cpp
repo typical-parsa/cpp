@@ -74,10 +74,12 @@ class Vector{
             }else if (index < 0 || index >= this->length){
                 cout << "Invalid Index!" << endl;
                 return INT_MIN;
-            }
-            
-            else{
+            }else{
                 return this->array_under_hood[index];
             }
         }
 };
+
+int main(){
+    
+}
