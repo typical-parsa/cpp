@@ -44,4 +44,13 @@ class Vector{
             this->length++;
             return true;
         }
+
+        bool pop_element(){
+            if (this->length == 0){
+                return false;
+            }else{
+                this->length--;
+                return true;
+            }
+        }
 };
