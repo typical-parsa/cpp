@@ -35,4 +35,13 @@ class Vector{
         ~Vector(){
             delete[] this->array_under_hood;
         }
+
+        bool push_element(int value){
+            if (this->length >= this->capacity){
+                this->resize_array();
+            }
+            this->array_under_hood[this->length] = value;
+            this->length++;
+            return true;
+        }
 };
