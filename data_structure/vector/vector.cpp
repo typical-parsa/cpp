@@ -71,7 +71,12 @@ class Vector{
             if (this->length == 0){
                 cout << "Vector is empty!" << endl;
                 return INT_MIN;
-            }else{
+            }else if (index < 0 || index >= this->length){
+                cout << "Invalid Index!" << endl;
+                return INT_MIN;
+            }
+            
+            else{
                 return this->array_under_hood[index];
             }
         }
