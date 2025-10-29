@@ -73,7 +73,6 @@ class Hash_table{
             }
         }
 
-
         int get_value(string key){
             int space_address = this->hash_function(key);
             Node* temp_node = this->data_map[space_address];
@@ -88,3 +87,6 @@ class Hash_table{
         }
 };
 
+int main(){
+    
+}
