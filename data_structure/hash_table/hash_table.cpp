@@ -33,4 +33,12 @@ class Hash_table{
         ~Hash_table(){
             delete[] this->data_map;
         }
+
+        int hash_function(string key){
+            int hashed_value = 0;
+            for (int i = 0 ; i < key.length(); i++){
+                hashed_value += ((int(key[i]) * 31) % this->size);
+            }
+            return hashed_value;
+        }
 };
