@@ -31,6 +31,14 @@ class Hash_table{
         }
 
         ~Hash_table(){
+            for (int i = 0 ; i < this->size ; i++){
+                Node* current_node = this->data_map[i];
+                while (current_node != nullptr){
+                    Node* temp_node = current_node;
+                    current_node = current_node->next;
+                    delete temp_node;
+                }
+            }
             delete[] this->data_map;
         }
 
@@ -45,17 +53,26 @@ class Hash_table{
         bool set_value(string key, int value){
             int space_address = this->hash_function(key);
             Node* new_node = new Node(key, value);
-            if (this->data_map[space_address] == nullptr){
-                this->data_map[space_address] = new_node;
+            if (data_map[space_address] == nullptr){
+                data_map[space_address] = new_node;
+                return true;
             }else{
-                Node* temp_node = this->data_map[space_address];
+                Node* temp_node = data_map[space_address];
+                Node* prev = nullptr;
                 while (temp_node != nullptr){
+                    if (temp_node->key == key){
+                        temp_node->value = value;
+                        delete new_node;
+                        return true;
+                    }
+                    prev = temp_node;
                     temp_node = temp_node->next;
                 }
-                temp_node->next = new_node;
+                prev->next = new_node;
+                return true;
             }
-            return true;
         }
+
 
         int get_value(string key){
             int space_address = this->hash_function(key);
@@ -70,3 +87,4 @@ class Hash_table{
             return INT_MIN;
         }
 };
+
