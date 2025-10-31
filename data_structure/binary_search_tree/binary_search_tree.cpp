@@ -16,10 +16,8 @@ class Node{
 };
 
 class BST{
-    private:
-        Node* root;
-
     public:
+        Node* root;
         BST(){
             this->root = nullptr;
         }
