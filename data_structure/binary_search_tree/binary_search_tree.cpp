@@ -30,7 +30,7 @@ class BST{
             }
             Node* temp_node = this->root;
             while (true){
-                if (new_node-value == temp_node-value){
+                if (new_node->value == temp_node->value){
                     return false;
                 }
                 if (new_node->value < temp_node->value){
@@ -46,6 +46,25 @@ class BST{
                     }
                     temp_node = temp_node->right;
                 }
+            }
+        }
+
+        bool contains_node(int value){
+            if (this->root == nullptr){
+                cout << "Tree is empty!" << endl;
+                return false;
+            }else{
+                Node* temp_node = this->root;
+                while (temp_node != nullptr){
+                    if (value < temp_node->value){
+                        temp_node = temp_node->left;
+                    }else if (value > temp_node->value){
+                        temp_node = temp_node->right;
+                    }else{
+                        return true;
+                    }
+                }
+                return false;
             }
         }
 };
