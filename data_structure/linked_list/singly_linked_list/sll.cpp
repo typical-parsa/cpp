@@ -33,4 +33,17 @@ class SLL{
                 delete temp_node;
             }
         }
+
+        void print_list(){
+            if (this->length == 0){
+                cout << "List is empty!" << endl;
+                return;
+            }else{
+                Node* temp_node = this->head;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << " ";
+                }
+                cout << endl;
+            }
+        }
 };
