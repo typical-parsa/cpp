@@ -42,6 +42,7 @@ class SLL{
                 Node* temp_node = this->head;
                 while (temp_node != nullptr){
                     cout << temp_node->value << " ";
+                    temp_node = temp_node->next;
                 }
                 cout << endl;
             }
@@ -204,7 +205,7 @@ class SLL{
                 return false;
             }else if (this->length == 1){
                 cout << "There is only one element in the list" << endl;
-                return false;
+                return true;
             }else{
                 Node* current_node = this->head;
                 Node* before_node = nullptr;
