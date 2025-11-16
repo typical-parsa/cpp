@@ -164,7 +164,34 @@ class SLL{
                     Node* next_node = previous_node->next;
                     previous_node->next = new_node;
                     new_node->next = next_node;
+                    this->length++;
                     return true; 
+                }else{
+                    return false;
+                }
+            }
+        }
+
+        bool delete_node(int index){
+            if (this->length == 0){
+                cout << "List is empty!" << endl;
+                return false;
+            }else if (index < 0 || index >= this->length){
+                cout << "Invalid Index" << endl;
+                return false;
+            }else if (index == 0){
+                return this->delete_first_node();
+            }else if (index == this->length - 1){
+                return this->delete_last_node();
+            }else{
+                Node* previous_node = this->get_node_by_index(index - 1);
+                if (previous_node != nullptr){
+                    Node* temp_node = previous_node->next;
+                    Node* next_node = temp_node->next;
+                    previous_node->next = next_node;
+                    delete temp_node;
+                    this->length--;
+                    return true;
                 }else{
                     return false;
                 }
