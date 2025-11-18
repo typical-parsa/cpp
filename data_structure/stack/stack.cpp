@@ -54,4 +54,17 @@ class Stack{
             this->height++;
             return true;
         }
+
+        int pop_node(){
+            if (this->height == 0){
+                cout << "Stack is empty!" << endl;
+                return INT_MIN;
+            }
+            Node* temp_node = this->top;
+            this->top = this->top->next;
+            int popped_value = temp_node->value;
+            this->height--;
+            delete temp_node;
+            return popped_value;
+        }
 };
