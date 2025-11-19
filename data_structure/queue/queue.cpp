@@ -61,4 +61,22 @@ class Queue{
             this->length++;
             return true;
         }
+
+        int dequeue_node(){
+            if (this->length == 0){
+                cout << "Queue is empty!" << endl;
+                return INT_MIN;
+            }
+            Node* temp_node = this->front;
+            int dequeued_value = temp_node->value;
+            if (this->length == 1){
+                this->front = nullptr;
+                this->rear = nullptr;
+            }else{
+                this->front = this->front->next;
+            }
+            this->length--;
+            delete temp_node;
+            return dequeued_value;
+        }
 };
