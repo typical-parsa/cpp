@@ -42,7 +42,7 @@ class Queue{
             }else {
                 Node* temp_node = this->front;
                 while (temp_node != nullptr){
-                    cout << temp_node->value;
+                    cout << temp_node->value << " ";
                     temp_node = temp_node->next;
                 }
                 cout << endl;
