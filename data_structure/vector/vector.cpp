@@ -35,4 +35,16 @@ class Vector{
         ~Vector(){
             delete[] this->array_under_hood;
         }
+
+        void print_vector(){
+            if (this->length == 0){
+                cout << "Vector is empty!" << endl;
+                return;
+            }else{
+                for (int i = 0 ; i < this->length ; i++){
+                    cout << this->array_under_hood[i];
+                }
+                cout << endl;
+            }
+        }
 };
