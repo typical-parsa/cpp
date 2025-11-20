@@ -66,4 +66,16 @@ class Vector{
                 return true;
             }
         }
+
+        int at(int index){
+            if (this->length == 0){
+                cout << "Vector is empty!" << endl;
+                return INT_MIN;
+            }else if (index < 0 || index >= this->length){
+                cout << "Invalid index!" << endl;
+                return INT_MIN;
+            }else{
+                return this->array_under_hood[index];
+            }
+        }
 };
