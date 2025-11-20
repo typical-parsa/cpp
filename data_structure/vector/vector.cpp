@@ -17,7 +17,7 @@ class Vector{
                 new_capacity = this->capacity * 2;
                 int* new_array_under_hood = new int[new_capacity];
                 for (int i = 0 ; i < this->length ; i++){
-                    new_array_under_hood[i] = this->array_under_hood[i]''
+                    new_array_under_hood[i] = this->array_under_hood[i];
                 }
                 delete[] this->array_under_hood;
                 this->array_under_hood = new_array_under_hood;
