@@ -56,4 +56,14 @@ class Vector{
             this->length++;
             return true;
         }
+
+        bool pop_element(){
+            if (this->length == 0){
+                cout << "Vector is empty!" << endl;
+                return false;
+            }else{
+                this->length--;
+                return true;
+            }
+        }
 };
