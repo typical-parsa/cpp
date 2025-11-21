@@ -87,3 +87,7 @@ class Vector{
             }
         }
 };
+
+int main(){
+    
+}
