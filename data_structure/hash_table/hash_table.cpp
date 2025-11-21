@@ -49,4 +49,27 @@ class Hash_table{
             }
             return hashed_value;
         }
+
+        bool set_value(string key, int value){
+            int space_address = this->hash_function(key);
+            Node* new_node = new Node(key, value);
+            if (data_map[space_address] == nullptr){
+                data_map[space_address] = new_node;
+                return true;
+            }else{
+                Node* temp_node = data_map[space_address];
+                Node* previous = nullptr;
+                while (temp_node != nullptr){
+                    if (temp_node->key == key){
+                        temp_node->value = value;
+                        delete new_node;
+                        return true;
+                    }
+                    previous = temp_node;
+                    temp_node = temp_node->next;
+                }
+                previous->next = new_node;
+                return true;
+            }
+        }
 };
