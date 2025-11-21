@@ -86,3 +86,7 @@ class Hash_table{
             return INT_MIN;
         }
 };
+
+int main(){
+    
+}
