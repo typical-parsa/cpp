@@ -74,7 +74,7 @@ class Hash_table{
         }
 
         int get_value(string key){
-            int space_address = this->hash_function;
+            int space_address = this->hash_function(key);
             Node* temp_node = this->data_map[space_address];
             while (temp_node != nullptr){
                 if (temp_node->key == key){
