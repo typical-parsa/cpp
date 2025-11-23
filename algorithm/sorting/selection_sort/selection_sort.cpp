@@ -5,8 +5,15 @@ using namespace std;
 void show_array(int arr[], int size);
 void swap_element(int arr[], int first_index, int second_index);
 void selection_sort(int arr[], int size);
-int main(){
 
+int main(){
+    int arr[] = {4, 3, 6, 1, 9, 2, 5, 8, 7};
+    int size = (sizeof(arr) / sizeof(int));
+    cout << "Before selection sorting: " << endl;
+    show_array(arr, size);
+    cout << "After selection sorting: " << endl;
+    selection_sort(arr, size);
+    show_array(arr, size);
 }
 
 void selection_sort(int arr[], int size){
