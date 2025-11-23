@@ -5,6 +5,9 @@ using namespace std;
 int binary_search(int arr[], int size, int target);
 
 int main(){
+    int arr[] = {1,2,3,4,5,6,7,8,9};
+    int size = sizeof(arr) / sizeof(int);
+    cout << binary_search(arr, size, 5) << endl;
 }
 
 int binary_search(int arr[], int size, int target){
