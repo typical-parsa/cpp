@@ -33,7 +33,7 @@ void selection_sort(int arr[], int size){
 void swap_element(int arr[], int first_index, int second_index){
     int temp_value = arr[first_index];
     arr[first_index] = arr[second_index];
-    arr[second_index] = arr[first_index];
+    arr[second_index] = temp_value;
 }
 
 void show_array(int arr[], int size){
