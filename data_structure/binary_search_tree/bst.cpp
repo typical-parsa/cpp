@@ -31,6 +31,7 @@ class BST{
             Node* temp_node = this->root;
             while (true){
                 if (new_node->value == temp_node->value){
+                    delete temp_node;
                     return false;
                 }
                 if (new_node->value < temp_node->value){
@@ -38,7 +39,7 @@ class BST{
                         temp_node->left = new_node;
                         return true;
                     }
-                    temp_node - temp_node->left;
+                    temp_node = temp_node->left;
                 }else{
                     if (temp_node->right == nullptr){
                         temp_node->right = new_node;
