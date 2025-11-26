@@ -70,3 +70,6 @@ class BST{
         }
 };
 
+int main(){
+
+}
