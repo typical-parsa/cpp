@@ -63,4 +63,14 @@ class DynamicArray{
             }
         }
 
+        int at(int index){
+            if (this->length == 0){
+                cout << "Dynamic Array is empty!" << endl;
+            }else if (index < 0 || index >= this->length){
+                cout << "Invalid Index!" << endl;
+                return INT_MIN;
+            }else{
+                return this->array_under_hood[index];
+            }
+        }
 };
