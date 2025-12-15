@@ -53,4 +53,14 @@ class DynamicArray{
             return true;
         }
 
+        bool pop_element(){
+            if (this->length == 0){
+                cout << "Dynamic Array is empty!" << endl;
+                return false;
+            }else{
+                this->length--;
+                return true;
+            }
+        }
+
 };
