@@ -123,4 +123,20 @@ class SLL{
                 return temp_node;
             }
         }
+
+        bool set_node_value(int index, int value){
+            if (this->length == 0){
+                return false;
+            }else if (index < 0 || index >= this->length){
+                return false;
+            }else{
+                Node* temp_node = this->get_node_by_inde(index);
+                if (temp_node != nullptr){
+                    temp_node->value = value;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
 };
