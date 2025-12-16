@@ -139,4 +139,26 @@ class SLL{
                 }
             }
         }
+
+        bool insert_node(int index, int value){
+            if (index < 0 || index > this->length){
+                return false;
+            }else if (index == 0){
+                return this->prepend_node(value);
+            }else if (index == this->length){
+                return this->append_node(value);
+            }else{
+                Node* previous_node = this->get_node_by_inde(index - 1);
+                if (previous_node != nullptr){
+                    Node* new_node = new Node(value);
+                    Node* next_node = previous_node->next;
+                    previous_node->next = new_node;
+                    new_node->next = next_node;
+                    this->length++;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
 };
