@@ -22,7 +22,7 @@ class SLL{
         SLL(){
             this->head = nullptr;
             this->tail = nullptr;
-            int lenght = 0;
+            this->length = 0;
         }
 
         ~SLL(){
@@ -31,6 +31,8 @@ class SLL{
                 this->head = this->head->next;
                 delete temp_node;
             }
+            this->tail = nullptr;
+            this->length = 0;
         }
 
         void print_list(){
@@ -204,3 +206,7 @@ class SLL{
             }
         }
 };
+
+int main(){
+    
+}
