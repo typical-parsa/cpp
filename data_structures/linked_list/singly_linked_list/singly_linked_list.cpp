@@ -22,7 +22,7 @@ class SLL{
         SLL(){
             this->head = nullptr;
             this->tail = nullptr;
-            int lenght;
+            int lenght = 0;
         }
 
         ~SLL(){
@@ -110,7 +110,7 @@ class SLL{
             return true;
         }
 
-        Node* get_node_by_inde(int index){
+        Node* get_node_by_index(int index){
             if (this->length == 0){
                 return nullptr;
             }else if (index < 0 || index >= this->length){
@@ -130,7 +130,7 @@ class SLL{
             }else if (index < 0 || index >= this->length){
                 return false;
             }else{
-                Node* temp_node = this->get_node_by_inde(index);
+                Node* temp_node = this->get_node_by_index(index);
                 if (temp_node != nullptr){
                     temp_node->value = value;
                     return true;
@@ -148,7 +148,7 @@ class SLL{
             }else if (index == this->length){
                 return this->append_node(value);
             }else{
-                Node* previous_node = this->get_node_by_inde(index - 1);
+                Node* previous_node = this->get_node_by_index(index - 1);
                 if (previous_node != nullptr){
                     Node* new_node = new Node(value);
                     Node* next_node = previous_node->next;
@@ -172,17 +172,35 @@ class SLL{
             }else if (index == this->length - 1){
                 return this->delete_last_node();
             }else {
-                Node* pervious_node = this->get_node_by_inde(index - 1);
-                if (pervious_node != nullptr){
-                    Node* temp_node = pervious_node->next;
+                Node* previous_node = this->get_node_by_index(index - 1);
+                if (previous_node != nullptr){
+                    Node* temp_node = previous_node->next;
                     Node* next_node = temp_node->next;
-                    pervious_node->next = next_node;
+                    previous_node->next = next_node;
                     delete temp_node;
                     this->length--;
                     return true;
                 }else{
                     return false;
                 }
+            }
+        }
+        bool reverse_list(){
+            if (this->length == 0 || this->length == 1){
+                return false;
+            }else{
+                Node* current_node = this->head;
+                Node* before_node = nullptr;
+                Node* after_node = nullptr;
+                this->head = this->tail;
+                this->tail = current_node;
+                while (current_node != nullptr){
+                    after_node = current_node->next;
+                    current_node->next = before_node;
+                    before_node = current_node;
+                    current_node = after_node;
+                }
+                return true;
             }
         }
 };
