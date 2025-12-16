@@ -35,7 +35,6 @@ class SLL{
 
         void print_list(){
             if (this->length == 0){
-                cout << "List is empty!" << endl;
                 return;
             }else{
                 Node* temp_node = this->head;
@@ -62,7 +61,6 @@ class SLL{
 
         bool delete_last_node(){
             if (this->length == 0){
-                cout << "List is empty!" << endl;
                 return false;
             }
             Node* temp_node = this->head;
@@ -98,7 +96,6 @@ class SLL{
 
         bool delete_first_node(){
             if(this->length == 0){
-                cout << "List is empty!" << endl;
                 return false;
             }
             Node* temp_node = this->head;
@@ -111,5 +108,19 @@ class SLL{
             this->length--;
             delete temp_node;
             return true;
+        }
+
+        Node* get_node_by_inde(int index){
+            if (this->length == 0){
+                return nullptr;
+            }else if (index < 0 || index >= this->length){
+                return nullptr;
+            }else{
+                Node* temp_node = this->head;
+                for (int i = 0 ; i < index ; i++){
+                    temp_node = temp_node->next;
+                }
+                return temp_node;
+            }
         }
 };
