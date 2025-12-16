@@ -161,4 +161,28 @@ class SLL{
                 }
             }
         }
+
+        bool delete_node(int index){
+            if (this->length == 0){
+                return false;
+            }else if (index < 0 || index >= this->length){
+                return false;
+            }else if (index == 0){
+                return this->delete_first_node();
+            }else if (index == this->length - 1){
+                return this->delete_last_node();
+            }else {
+                Node* pervious_node = this->get_node_by_inde(index - 1);
+                if (pervious_node != nullptr){
+                    Node* temp_node = pervious_node->next;
+                    Node* next_node = temp_node->next;
+                    pervious_node->next = next_node;
+                    delete temp_node;
+                    this->length--;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
 };
