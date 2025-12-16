@@ -11,3 +11,25 @@ class Node{
             this->next = nullptr;
         }
 };
+
+class SLL{
+    private:
+        Node* head;
+        Node* tail;
+        int length;
+    
+    public:
+        SLL(){
+            this->head = nullptr;
+            this->tail = nullptr;
+            int lenght;
+        }
+
+        ~SLL(){
+            while (this->head != nullptr){
+                Node* temp_node = this->head;
+                this->head = this->head->next;
+                delete temp_node;
+            }
+        }
+};
