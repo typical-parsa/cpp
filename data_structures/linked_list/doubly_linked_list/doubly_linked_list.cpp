@@ -81,4 +81,18 @@ class DLL{
             delete temp_node;
             return true;
         }
+
+        bool prepend_node(int value){
+            Node* new_node = new Node(value);
+            if (this->length == 0){
+                this->head = new_node;
+                this->tail = new_node;
+            }else{
+                this->head->before = new_node;
+                new_node->next = this->head;
+                this->head = new_node;
+            }
+            this->length++;
+            return true;
+        }
 };
