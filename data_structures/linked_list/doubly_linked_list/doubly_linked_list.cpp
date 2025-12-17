@@ -37,4 +37,17 @@ class DLL{
             this->tail = nullptr;
             this->length = 0;
         }
+
+        void print_list(){
+            if (this->length == 0){
+                return;
+            }else{
+                Node* temp_node = this->head;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << " ";
+                    temp_node = temp_node->next;
+                }
+                cout << endl;
+            }
+        }
 };
