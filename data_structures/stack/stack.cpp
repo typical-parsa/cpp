@@ -33,4 +33,17 @@ class Stack{
             }
             this->height = 0;
         }
+
+        void print_stack(){
+            if (this->height == 0){
+                return;
+            }else{
+                Node* temp_node = this->top;
+                while (temp_node != nullptr){
+                    cout << temp_node->value << " ";
+                    temp_node = temp_node->next;
+                }
+                cout << endl;
+            }
+        }
 };
