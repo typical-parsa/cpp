@@ -62,4 +62,21 @@ class Queue{
             this->length++;
             return true;
         }
+
+        int dequeue_node(){
+            if (this->length == 0){
+                return INT_MIN;
+            }
+            Node* temp_node = this->front;
+            int dequeued_value = temp_node->value;
+            if (this->length == 1){
+                this->rear = nullptr;
+                this->front = nullptr;
+            }else{
+                this->front = this->front->next;
+            }
+            delete temp_node;
+            this->length--;
+            return dequeued_value;
+        }
 };
