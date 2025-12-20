@@ -23,3 +23,12 @@ bool push(int arr[], int &size, int capacity, int value){
         return true;
     }
 }
+
+int pop(int arr[], int &size){
+    if (size == 0){
+        return INT_MIN;
+    }else{
+        size--;
+        return arr[size];
+    }
+}
