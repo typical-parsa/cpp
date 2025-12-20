@@ -17,3 +17,16 @@ bool append(int arr[], int value, int &size, int capacity){
     size++;
     return true;
 }
+
+bool prepend(int arr[], int value, int &size, int capacity){
+    if (size >= capacity){
+        return false;
+    }
+    for (int i = size ; i > 0 ; i--){
+        arr[i] = arr[i - 1];
+    }
+    arr[0] = value;
+    size++;
+    return true;
+
+}
