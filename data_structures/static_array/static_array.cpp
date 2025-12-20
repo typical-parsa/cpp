@@ -1,4 +1,4 @@
-
+#include <iostream>
 using namespace std;
 
 bool append(int arr[], int value, int &size, int capacity);
@@ -7,6 +7,13 @@ int main(){
     int arr[100];
     int size = 0;
     int capacity = 100;
+}
+
+void print_array(int arr[], int size){
+    for (int i = 0 ; i < size ; i++){
+        cout << arr[i] << " ";
+    }
+    cout << endl;
 }
 
 bool append(int arr[], int value, int &size, int capacity){
@@ -49,3 +56,4 @@ bool delete_first(int arr[], int &size){
     size--;
     return true;
 }
+
