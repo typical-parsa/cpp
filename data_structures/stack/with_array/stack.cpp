@@ -13,3 +13,13 @@ void print_stack(int arr[], int size){
     }
     cout << endl;
 }  
+
+bool push(int arr[], int &size, int capacity, int value){
+    if (size >= capacity){
+        return false;
+    }else{
+        arr[size] = value;
+        size++;
+        return true;
+    }
+}
