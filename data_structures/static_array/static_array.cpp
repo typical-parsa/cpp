@@ -1,12 +1,18 @@
 #include <iostream>
 using namespace std;
 
+void print_array(int arr[], int size);
 bool append(int arr[], int value, int &size, int capacity);
+bool prepend(int arr[], int value, int &size, int capacity);
+bool delete_last(int arr[], int &size);
+bool delete_first(int arr[], int &size);
+bool insert_at(int arr[], int &size, int capacity, int index, int value);
+bool delete_at(int arr[], int &size, int index);
+
 
 int main(){
-    int arr[100];
-    int size = 0;
-    int capacity = 100;
+
+
 }
 
 void print_array(int arr[], int size){
@@ -60,7 +66,7 @@ bool delete_first(int arr[], int &size){
 bool insert_at(int arr[], int &size, int capacity, int index, int value){
     if (size >= capacity ){
         return false;
-    }else if (index > size){
+    }else if (index < 0 || index > size){
         return false;
     }else{
         for (int i = size ; i > index ; i--){
