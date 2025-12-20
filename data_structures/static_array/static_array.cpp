@@ -30,3 +30,11 @@ bool prepend(int arr[], int value, int &size, int capacity){
     return true;
 
 }
+
+bool delete_last(int arr[], int &size){
+    if (size == 0){
+        return false;
+    }
+    size--;
+    return true;
+}
