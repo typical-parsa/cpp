@@ -57,3 +57,17 @@ bool delete_first(int arr[], int &size){
     return true;
 }
 
+bool insert_at(int arr[], int &size, int capacity, int index, int value){
+    if (size >= capacity ){
+        return false;
+    }else if (index > size){
+        return false;
+    }else{
+        for (int i = size ; i > index ; i--){
+            arr[i] = arr[i - 1];
+        }
+        arr[index] = value;
+        size++;
+        return true;
+    }
+}
