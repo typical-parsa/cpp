@@ -38,3 +38,14 @@ bool delete_last(int arr[], int &size){
     size--;
     return true;
 }
+
+bool delete_first(int arr[], int &size){
+    if (size == 0){
+        return false;
+    }
+    for (int i = 0 ; i < size - 1; i++){
+        arr[i] = arr[i + 1];
+    }
+    size--;
+    return true;
+}
