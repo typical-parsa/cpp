@@ -3,6 +3,10 @@
 
 using namespace std;
 
+int pop(int arr[], int &size);
+bool push(int arr[], int &size, int capacity, int value);
+void print_stack(int arr[], int size);
+
 int main(){
 
 }
