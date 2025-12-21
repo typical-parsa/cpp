@@ -13,7 +13,7 @@ int main(){
 void bubble_sort(int arr[], int size){
     for (int i = 0 ; i < size - 1; i++){
         bool swapped = false;
-        for (int j = 0 ; j < size - i ; j++){
+        for (int j = 0 ; j < size - 1 - i ; j++){
             if (arr[j] > arr[j + 1]){
                 swap_element(arr, j, j + 1);
                 swapped = true;
