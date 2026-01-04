@@ -5,6 +5,7 @@ using namespace std;
 void printArray(int arr[], int size);
 bool append(int arr[], int &size, int capacity, int value);
 bool prepend(int arr[], int &size, int capacity, int value);
+bool deleteLast(int arr[], int &size);
 
 int main(){
     int arr[100];
@@ -13,7 +14,8 @@ int main(){
     prepend(arr, size, capacity, 1);
     prepend(arr, size, capacity, 2);
     printArray(arr, size);
-
+    deleteLast(arr, size);
+    printArray(arr, size);
 }
 
 void printArray(int arr[], int size){
@@ -41,5 +43,13 @@ bool prepend(int arr[], int &size, int capacity, int value){
     }
     arr[0] = value;
     size++;
+    return true;
+}
+
+bool deleteLast(int arr[], int &size){
+    if (size == 0){
+        return false;
+    }
+    size--;
     return true;
 }
