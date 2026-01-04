@@ -83,3 +83,17 @@ bool insertAt(int arr[], int &size, int capacity, int index ,int value){
         return true;
     }
 }
+
+bool deleteAt(int arr[], int &size, int capacity, int index){
+    if (size == 0){
+        return false;
+    }else if (index < 0 || index >= size){
+        return false;
+    }else{
+        for (int i = index ; i < size - 1; i++){
+            arr[i] = arr[i + 1];
+        }
+        size--;
+        return true;
+    }
+}
