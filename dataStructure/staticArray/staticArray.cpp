@@ -4,15 +4,15 @@ using namespace std;
 
 void printArray(int arr[], int size);
 bool append(int arr[], int &size, int capacity, int value);
+bool prepend(int arr[], int &size, int capacity, int value);
 
 int main(){
     int arr[100];
     int size = 0;
     int capacity = 100;
-    append(arr, size, capacity, 1);
-    append(arr, size, capacity, 2);
-    printArray(arr,size);
-    
+    prepend(arr, size, capacity, 1);
+    prepend(arr, size, capacity, 2);
+    printArray(arr, size);
 
 }
 
@@ -28,6 +28,18 @@ bool append(int arr[], int &size, int capacity, int value){
         return false;
     }
     arr[size] = value;
+    size++;
+    return true;
+}
+
+bool prepend(int arr[], int &size, int capacity, int value){
+    if (size >= capacity){
+        return false;
+    }
+    for (int i = size ; i > 0 ; i--){
+        arr[i] = arr[i - 1];
+    }
+    arr[0] = value;
     size++;
     return true;
 }
