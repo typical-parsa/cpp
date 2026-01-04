@@ -7,6 +7,7 @@ bool append(int arr[], int &size, int capacity, int value);
 bool prepend(int arr[], int &size, int capacity, int value);
 bool deleteLast(int arr[], int &size);
 bool deleteFirst(int arr[], int &size);
+bool insertAt(int arr[], int &size, int capacity, int index, int value);
 
 int main(){
     int arr[100];
@@ -15,8 +16,10 @@ int main(){
     prepend(arr, size, capacity, 1);
     prepend(arr, size, capacity, 2);
     printArray(arr, size);
-    deleteFirst(arr, size);
+    insertAt(arr, size, capacity, 1, 100);
     printArray(arr, size);
+
+
 }
 
 void printArray(int arr[], int size){
@@ -64,4 +67,19 @@ bool deleteFirst(int arr[], int &size){
     }
     size--;
     return false;
+}
+
+bool insertAt(int arr[], int &size, int capacity, int index ,int value){
+    if (size >= capacity){
+        return false;
+    }else if (index < 0 || index > size){
+        return false;
+    }else{
+        for (int i = size ; i > index; i--){
+            arr[i] = arr[i - 1];
+        }
+        arr[index] = value;
+        size++;
+        return true;
+    }
 }
