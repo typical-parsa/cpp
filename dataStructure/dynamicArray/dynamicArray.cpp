@@ -52,4 +52,13 @@ class DynamicArray{
             this->length++;
             return true;
         }
+
+        bool popElement(){
+            if (this->length == 0){
+                return false;
+            }else{
+                this->length--;
+                return true;
+            }
+        }
 };
