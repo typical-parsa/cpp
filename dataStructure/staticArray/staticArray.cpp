@@ -60,7 +60,7 @@ bool deleteFirst(int arr[], int &size){
         arr[i] = arr[i + i];
     }
     size--;
-    return false;
+    return true;
 }
 
 bool insertAt(int arr[], int &size, int capacity, int index ,int value){
