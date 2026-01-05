@@ -43,4 +43,13 @@ class DynamicArray{
         ~DynamicArray(){
             delete[] this->arrayUnderHood;
         }
+
+        bool pushElement(int value){
+            if (this->length >= this->capacity){
+                this->resizeArray();
+            }
+            this->arrayUnderHood[this->length] = value;
+            this->length++;
+            return true;
+        }
 };
