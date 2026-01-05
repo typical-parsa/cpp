@@ -72,3 +72,7 @@ class DynamicArray{
             }
         }
 };
+
+int main(){
+    
+}
