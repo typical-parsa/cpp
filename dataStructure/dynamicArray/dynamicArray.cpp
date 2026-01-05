@@ -9,6 +9,24 @@ class DynamicArray{
         int length;
         int capacity;
 
+        void resizeArray(){
+            int newCapacity;
+            if (this->capacity == 0){
+                newCapacity = 1;
+            }else{
+                newCapacity = this->capacity * 2;
+            }
+            int* newArrayUnderHood = new int[newCapacity];
+            if (this->arrayUnderHood != nullptr){
+                for(int i = 0 ; i < this->length ; i++){
+                    newArrayUnderHood[i] = this->arrayUnderHood[i];
+                }
+                delete[] this->arrayUnderHood;
+            }
+            this->arrayUnderHood = newArrayUnderHood;
+            this->capacity = newCapacity;
+        }
+
     public:
         DynamicArray(int capacity){
             if (capacity <= 0){
