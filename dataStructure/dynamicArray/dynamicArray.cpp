@@ -61,4 +61,14 @@ class DynamicArray{
                 return true;
             }
         }
+
+        int atIndex(int index){
+            if (this->length == 0){
+                return INT_MIN;
+            }else if (index < 0 || index >= this->length){
+                return INT_MIN;
+            }else{
+                return this->arrayUnderHood[index];
+            }
+        }
 };
