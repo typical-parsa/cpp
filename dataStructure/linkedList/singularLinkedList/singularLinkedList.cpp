@@ -83,6 +83,19 @@ class singularLinkedList{
             delete tempNode;
             return true;
         }
+
+        bool prependNode(int value){
+            Node* newNode = new Node(value);
+            if (this->lenght == 1){
+                this->head = newNode;
+                this->tail = newNode;
+            }else{
+                newNode->next = this->head;
+                this->head = newNode;
+            }
+            this->lenght++;
+            return true;
+        }
 };
 
 int main (){
@@ -92,7 +105,7 @@ int main (){
     mysll->appendNode(3);
     mysll->appendNode(4);
     mysll->printList();
-    mysll->deleteLastNode();
-    mysll->deleteLastNode();
+    mysll->prependNode(0);
+    mysll->prependNode(-1);
     mysll->printList();
 }
