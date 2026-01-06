@@ -61,4 +61,38 @@ class singularLinkedList{
             this->lenght++;
             return true;
         }
+
+        bool deleteLastNode(){
+            if (this->lenght == 0){
+                return false;
+            }
+            Node* tempNode = this->head;
+            if (this->lenght == 1){
+                this->head = nullptr;
+                this->tail = nullptr;
+            }else{
+                Node* previousNode = tempNode;
+                while (tempNode->next != nullptr){
+                    previousNode = tempNode;
+                    tempNode = tempNode->next;
+                }
+                previousNode->next = nullptr;
+                this->tail = previousNode;
+            }
+            this->lenght--;
+            delete tempNode;
+            return true;
+        }
 };
+
+int main (){
+    singularLinkedList* mysll = new singularLinkedList();
+    mysll->appendNode(1);
+    mysll->appendNode(2);
+    mysll->appendNode(3);
+    mysll->appendNode(4);
+    mysll->printList();
+    mysll->deleteLastNode();
+    mysll->deleteLastNode();
+    mysll->printList();
+}
