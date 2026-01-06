@@ -35,4 +35,17 @@ class singularLinkedList{
             this->tail = nullptr;
             this->lenght = 0;
         }
+
+        void printList(){
+            if (this->lenght == 0){
+                return;
+            }else{
+                Node* tempNode = this->head;
+                while (tempNode != nullptr){
+                    cout << tempNode->value << " ";
+                    tempNode = tempNode->next;
+                }
+                cout << endl;
+            }
+        }
 };
