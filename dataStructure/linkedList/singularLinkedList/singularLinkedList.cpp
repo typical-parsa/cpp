@@ -48,4 +48,17 @@ class singularLinkedList{
                 cout << endl;
             }
         }
+
+        bool appendNode(int value){
+            Node* newNode = new Node(value);
+            if (this->lenght == 0){
+                this->head = newNode;
+                this->tail = newNode;
+            }else{
+                this->tail->next = newNode;
+                this->tail = newNode;
+            }
+            this->lenght++;
+            return true;
+        }
 };
