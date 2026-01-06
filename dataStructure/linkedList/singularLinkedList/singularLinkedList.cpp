@@ -96,6 +96,22 @@ class singularLinkedList{
             this->lenght++;
             return true;
         }
+
+        bool deleteFirstNode(){
+            if (this->lenght == 0){
+                return false;
+            }
+            Node* tempNode = this->head;
+            if (this->lenght == 1){
+                this->head = nullptr;
+                this->tail = nullptr;
+            }else{
+                this->head = this->head->next;
+            }
+            this->lenght--;
+            delete tempNode;
+            return true;
+        }
 };
 
 int main (){
@@ -105,7 +121,7 @@ int main (){
     mysll->appendNode(3);
     mysll->appendNode(4);
     mysll->printList();
-    mysll->prependNode(0);
-    mysll->prependNode(-1);
+    mysll->deleteFirstNode();
+    mysll->deleteFirstNode();
     mysll->printList();
 }
