@@ -211,12 +211,5 @@ class singularLinkedList{
 };
 
 int main (){
-    singularLinkedList* mysll = new singularLinkedList();
-    mysll->appendNode(1);
-    mysll->appendNode(2);
-    mysll->appendNode(3);
-    mysll->appendNode(4);
-    mysll->printList();
-    mysll->reverseList();
-    mysll->printList();
+    
 }
