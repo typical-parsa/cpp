@@ -165,6 +165,30 @@ class singularLinkedList{
             }
         }
 
+        bool deleteNode(int index){
+            if (this->lenght == 0){
+                return false;
+            }else if (index < 0 || index >= this->lenght){
+                return false;
+            }else if (index == 0){
+                return this->deleteFirstNode();
+            }else if (index == this->lenght - 1){
+                return this->deleteLastNode();
+            }else{
+                Node* previousNode = this->getNodeByIndex(index - 1);
+                if (previousNode != nullptr){
+                    Node* tempNode = previousNode->next;
+                    Node* nextNode = tempNode->next;
+                    previousNode->next = nextNode;
+                    delete tempNode;
+                    this->lenght--;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+
 };
 
 int main (){
@@ -175,5 +199,7 @@ int main (){
     mysll->appendNode(4);
     mysll->printList();
     mysll->insertNode(2, 5000);
+    mysll->printList();
+    mysll->deleteNode(2);
     mysll->printList();
 }
