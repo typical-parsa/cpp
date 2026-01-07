@@ -189,6 +189,25 @@ class singularLinkedList{
             }
         }
 
+        bool reverseList(){
+            if (this->lenght == 0 || this->lenght == 1){
+                return false;
+            }else{
+                Node* currentNode = this->head;
+                Node* beforeNode = nullptr;
+                Node* nextNode = nullptr;
+                this->head = this->tail;
+                this->tail = currentNode;
+                while(currentNode != nullptr){
+                    nextNode = currentNode->next;
+                    currentNode->next = beforeNode;
+                    beforeNode = currentNode;
+                    currentNode = nextNode;
+                }
+                return true;
+            }
+        }
+
 };
 
 int main (){
@@ -198,8 +217,6 @@ int main (){
     mysll->appendNode(3);
     mysll->appendNode(4);
     mysll->printList();
-    mysll->insertNode(2, 5000);
-    mysll->printList();
-    mysll->deleteNode(2);
+    mysll->reverseList();
     mysll->printList();
 }
