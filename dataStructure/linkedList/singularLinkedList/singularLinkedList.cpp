@@ -112,6 +112,20 @@ class singularLinkedList{
             delete tempNode;
             return true;
         }
+
+        Node* getNodeByIndex(int index){
+            if (this->lenght == 0){
+                return nullptr;
+            }else if (index < 0 || index >= this->lenght){
+                return nullptr;
+            }else{
+                Node* tempNode = this->head;
+                for (int i = 0 ; i < index ; i++){
+                    tempNode = tempNode->next;
+                }
+                return tempNode;
+            }
+        }
 };
 
 int main (){
