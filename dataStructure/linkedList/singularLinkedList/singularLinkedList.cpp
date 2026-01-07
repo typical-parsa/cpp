@@ -126,6 +126,23 @@ class singularLinkedList{
                 return tempNode;
             }
         }
+
+        bool setNodeValue(int index, int value){
+            if (this->lenght == 0){
+                return false;
+            }else if (index < 0 || index >= this->lenght){
+                return false;
+            }else {
+                Node* tempNode = this->getNodeByIndex(index);
+                if (tempNode != nullptr){
+                    tempNode->value = value;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
+
 };
 
 int main (){
@@ -135,7 +152,6 @@ int main (){
     mysll->appendNode(3);
     mysll->appendNode(4);
     mysll->printList();
-    mysll->deleteFirstNode();
-    mysll->deleteFirstNode();
+    mysll->setNodeValue(3, 5000);
     mysll->printList();
 }
