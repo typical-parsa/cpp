@@ -36,4 +36,17 @@ class doublyLinkedList{
             this->tail = nullptr;
             this->length = 0;
         }
+
+        void printList(){
+            if (this->length = 0){
+                return;
+            }else{
+                Node* tempNode = this->head;
+                while (tempNode != nullptr){
+                    cout << tempNode->value << " ";
+                    tempNode = tempNode->next;
+                }
+                cout << endl;
+            }
+        }
 };
