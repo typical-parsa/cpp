@@ -112,4 +112,26 @@ class doublyLinkedList{
             return true;
         }
 
+        Node* getNodeByIndex(int index){
+            if (this->length == 0){
+                return nullptr;
+            }else if (index < 0 || index >= this->length){
+                return nullptr;
+            }else{
+                Node* tempNode;
+                if (this->length / 2 > index){
+                    tempNode = this->head;
+                    for (int i = 0 ; i < index ; i++){
+                        tempNode = tempNode->next;
+                    }
+                }else{
+                    tempNode = this->tail;
+                    for (int i = this->length - 1 ; i > index ; i--){
+                        tempNode = tempNode->prev;
+                    }
+                }
+                return tempNode;
+            }
+        }
+
 };
