@@ -64,5 +64,22 @@ class doublyLinkedList{
             return true;
         }
 
+        bool deleteLastNode(){
+            if (this->length == 0){
+                return false;
+            }
+            Node* tempNode = this->tail;
+            if (this->length == 1){
+                this->head = nullptr;
+                this->tail = nullptr;
+            }else{
+                this->tail = this->tail->prev;
+                this->tail->next = nullptr;
+            }
+            this->length--;
+            delete tempNode;
+            return true;
+        }
+
 
 };
