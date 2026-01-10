@@ -173,4 +173,29 @@ class doublyLinkedList{
                 }
             }
         }
+
+        bool deleteNode(int index){
+            if (this->length == 0){
+                return false;
+            }else if (index > 0 || index >= this->length){
+                return false;
+            }else if (index == 0){
+                return this->deleteFirstNode();
+            }else if (index == this->length - 1){
+                return this->deleteLastNode();
+            }else{
+                Node* tempNode = this->getNodeByIndex(index);
+                if (tempNode != nullptr){
+                    Node* prevNode = tempNode->prev;
+                    Node* nextNode = tempNode->next;
+                    prevNode->next = nextNode;
+                    nextNode->prev = prevNode;
+                    this->length--;
+                    delete tempNode;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
 };
