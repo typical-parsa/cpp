@@ -5,6 +5,10 @@ using namespace std;
 
 int binarySearch(int arr[], int size, int target);
 
+int main(){
+    
+}
+
 int binarySearch(int arr[], int size, int target){
     int start = 0;
     int stop = size - 1;
