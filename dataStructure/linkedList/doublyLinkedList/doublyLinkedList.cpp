@@ -150,4 +150,27 @@ class doublyLinkedList{
             }
         }
 
+        bool insertNode(int index, int value){
+            if (index < 0 || index > this->length){
+                return false;
+            }else if (index == 0){
+                return this->prependNode(value);
+            }else if (index == this->length){
+                return this->appendNode(value);
+            }else{
+                Node* prevNode = this->getNodeByIndex(index - 1);
+                if (prevNode != nullptr){
+                    Node* newNode = new Node(value);
+                    Node* nextNode = prevNode->next;
+                    prevNode->next = newNode;
+                    newNode->prev = prevNode;
+                    newNode->next = nextNode;
+                    nextNode->prev = newNode;
+                    this->length++;
+                    return true;
+                }else{
+                    return false;
+                }
+            }
+        }
 };
