@@ -5,6 +5,9 @@ using namespace std;
 
 int linearSearch(int arr[], int size, int target);
 
+int main(){
+    
+}
 
 int linearSearch(int arr[], int size, int target){
     for (int i = 0 ; i < size ; i++){
