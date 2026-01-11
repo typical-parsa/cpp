@@ -82,12 +82,5 @@ class Queue{
 };
 
 int main(){
-    Queue* myQueue = new Queue();
-    myQueue->printQueue();
-    myQueue->enqueueNode(1);
-    myQueue->enqueueNode(2);
-    myQueue->enqueueNode(3);
-    myQueue->printQueue();
-    cout << myQueue->dequeueNode() << endl;
-    myQueue->printQueue();
+
 }
