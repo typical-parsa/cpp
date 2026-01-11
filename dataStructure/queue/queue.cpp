@@ -49,9 +49,26 @@ class Queue{
                 cout << endl;
             }
         }
+
+        bool enqueueNode(int value){
+            Node* newNode = new Node(value);
+            if (this->length == 0){
+                this->front = newNode;
+                this->rear = newNode;
+            }else{
+                this->rear->next = newNode;
+                this->rear = newNode;
+            }
+            this->length++;
+            return true;
+        }
 };
 
 int main(){
     Queue* myQueue = new Queue();
+    myQueue->printQueue();
+    myQueue->enqueueNode(1);
+    myQueue->enqueueNode(2);
+    myQueue->enqueueNode(3);
     myQueue->printQueue();
 }
