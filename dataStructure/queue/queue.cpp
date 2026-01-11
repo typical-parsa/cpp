@@ -36,4 +36,22 @@ class Queue{
             this->rear = nullptr;
             this->length = 0;
         }
+
+        void printQueue(){
+            if (this->length == 0){
+                return;
+            }else{
+                Node* tempNode = this->front;
+                while (tempNode != nullptr){
+                    cout << tempNode->value << " ";
+                    tempNode = tempNode->next;
+                }
+                cout << endl;
+            }
+        }
 };
+
+int main(){
+    Queue* myQueue = new Queue();
+    myQueue->printQueue();
+}
