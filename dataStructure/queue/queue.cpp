@@ -62,6 +62,23 @@ class Queue{
             this->length++;
             return true;
         }
+
+        int dequeueNode(){
+            if (this->length == 0){
+                return INT_MIN;
+            }
+            Node* tempNode = this->front;
+            int dequeuedValue = tempNode->value;
+            if (this->length == 1){
+                this->front = nullptr;
+                this->rear = nullptr;
+            }else{
+                this->front = this->front->next;
+            }
+            delete tempNode;
+            this->length--;
+            return dequeuedValue;
+        }
 };
 
 int main(){
@@ -70,5 +87,7 @@ int main(){
     myQueue->enqueueNode(1);
     myQueue->enqueueNode(2);
     myQueue->enqueueNode(3);
+    myQueue->printQueue();
+    cout << myQueue->dequeueNode() << endl;
     myQueue->printQueue();
 }
