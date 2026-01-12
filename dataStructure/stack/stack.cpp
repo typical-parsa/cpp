@@ -47,4 +47,12 @@ class Stack{
             }
         }
 
+        bool pushNode(int value){
+            Node* newNode = new Node(value);
+            newNode->next = this->top;
+            this->top = newNode;
+            this->height++;
+            return true;
+        }
+
 };
