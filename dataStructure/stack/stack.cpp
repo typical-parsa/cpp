@@ -66,5 +66,8 @@ class Stack{
             delete tempNode;
             return poppedValue;
         }
-
 };
+
+int main(){
+    
+}
