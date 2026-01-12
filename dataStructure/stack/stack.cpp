@@ -43,7 +43,7 @@ class Stack{
                     cout << tempNode->value << " ";
                     tempNode = tempNode->next;
                 }
-                cout << ndl;
+                cout << endl;
             }
         }
 
@@ -69,5 +69,5 @@ class Stack{
 };
 
 int main(){
-    
+
 }
