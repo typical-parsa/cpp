@@ -55,4 +55,16 @@ class Stack{
             return true;
         }
 
+        int popNode(){
+            if (this->height == 0){
+                return INT_MIN;
+            }
+            Node* tempNode = this->top;
+            int poppedValue = tempNode->value;
+            this->top = this->top->next;
+            this->height--;
+            delete tempNode;
+            return poppedValue;
+        }
+
 };
