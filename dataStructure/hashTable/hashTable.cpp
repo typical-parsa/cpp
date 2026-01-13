@@ -20,6 +20,14 @@ class hashTable{
     private:
         int size;
         Node** dataMap;
+
+        int hashFunction(string key){
+            int hashedValue = 0;
+            for (int i = 0 ; i < key.length() ; i++){
+                hashedValue += ((int(key[i]) * 31) % this->size);
+            }
+            return hashedValue;
+        }
     
     public:
         hashTable(int tableSize){
@@ -41,4 +49,6 @@ class hashTable{
             }
             delete[] this->dataMap;
         }
+
+
 };
