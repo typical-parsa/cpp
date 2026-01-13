@@ -50,5 +50,26 @@ class hashTable{
             delete[] this->dataMap;
         }
 
-
+        bool setValue (string key, int value){
+            int spaceAddress = this->hashFunction(key);
+            Node* newNode = new Node(key, value);
+            if (this->dataMap[spaceAddress] == nullptr){
+                this->dataMap[spaceAddress] = newNode;
+                return true;
+            }else{
+                Node* tempNode = this->dataMap[spaceAddress];
+                Node* prevNode = nullptr;
+                while (tempNode != nullptr){
+                    if (tempNode->key == key){
+                        tempNode->value = value;
+                        delete newNode;
+                        return true;
+                    }
+                    prevNode = tempNode;
+                    tempNode = tempNode->next;
+                }
+                prevNode->next = newNode;
+                return true;
+            }
+        }
 };
