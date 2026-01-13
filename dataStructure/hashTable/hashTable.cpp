@@ -72,4 +72,16 @@ class hashTable{
                 return true;
             }
         }
+
+        int getValue(string key){
+            int spaceAddress = this->hashFunction(key);
+            Node* tempNode = this->dataMap[spaceAddress];
+            while (tempNode != nullptr){
+                if (tempNode->key == key){
+                    return tempNode->value;
+                }
+                tempNode = tempNode->next;
+            }
+            return INT_MIN;
+        }
 };
