@@ -57,7 +57,7 @@ bool deleteFirst(int arr[], int &size){
         return false;
     }
     for (int i = 0 ; i < size - 1 ; i++){
-        arr[i] = arr[i + i];
+        arr[i] = arr[i + 1];
     }
     size--;
     return true;
