@@ -23,7 +23,7 @@ class singularLinkedList{
         singularLinkedList(){
             this->head = nullptr;
             this->tail = nullptr;
-            this->lenght;
+            this->lenght = 0;
         }
 
         ~singularLinkedList(){
@@ -86,7 +86,7 @@ class singularLinkedList{
 
         bool prependNode(int value){
             Node* newNode = new Node(value);
-            if (this->lenght == 1){
+            if (this->lenght == 0){
                 this->head = newNode;
                 this->tail = newNode;
             }else{
