@@ -38,7 +38,7 @@ class doublyLinkedList{
         }
 
         void printList(){
-            if (this->length = 0){
+            if (this->length == 0){
                 return;
             }else{
                 Node* tempNode = this->head;
@@ -177,7 +177,7 @@ class doublyLinkedList{
         bool deleteNode(int index){
             if (this->length == 0){
                 return false;
-            }else if (index > 0 || index >= this->length){
+            }else if (index < 0 || index >= this->length){
                 return false;
             }else if (index == 0){
                 return this->deleteFirstNode();
