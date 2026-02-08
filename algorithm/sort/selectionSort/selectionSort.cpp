@@ -8,7 +8,13 @@ void swapElement(int arr[], int firstIndex, int secondIndex);
 
 
 int main(){
-
+    int arr[] = {1, 5, 3, 2, 6, 4, 7, 9 ,8};
+    int size = sizeof(arr) / sizeof(int);
+    cout << "Befor sorting : " << endl;
+    showArray(arr, size);
+    cout << "After sorting : " << endl;
+    selectionSort(arr, size);
+    showArray(arr, size);
 }
 
 void selectionSort(int arr[], int size){
@@ -20,18 +26,18 @@ void selectionSort(int arr[], int size){
             }
         }
         if (minIndex != i){
-            swap_element(arr, i, minIndex);
+            swapElement(arr, i, minIndex);
         }
     }
 }
 
-void swap_element(int arr[], int first_index, int second_index){
+void swapElement(int arr[], int first_index, int second_index){
     int temp_value = arr[first_index];
     arr[first_index] = arr[second_index];
     arr[second_index] = temp_value;
 }
 
-void show_array(int arr[], int size){
+void showArray(int arr[], int size){
     for (int i = 0 ; i < size ; i++){
         cout << arr[i] << " ";
     }
