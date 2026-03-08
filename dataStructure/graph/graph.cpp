@@ -5,18 +5,27 @@ using namespace std;
 class Graph{
     private:
         int vertexNumber;
-        int adjacencyList[100][100];
+        int** adjacencyList;
 
     public:
         Graph(int vertices){
             this->vertexNumber = vertices;
+            this->adjacencyList = new int*[vertexNumber];   
+            for(int i = 0; i < vertexNumber; i++) {
+                this->adjacencyList[i] = new int[vertexNumber];
+            }
             for (int i = 0 ; i < vertexNumber ; i++){
                 for (int j = 0 ; j < vertexNumber ; j++){
                     this->adjacencyList[i][j] = 0;
                 }
             }
         }
-
+        ~Graph() {
+            for(int i = 0; i < vertexNumber; i++) {
+                delete[] adjacencyList[i];
+            }
+            delete[] adjacencyList;
+        }
         void addEdge(int uNode, int vNode){
             adjacencyList[uNode][vNode] = 1;
             adjacencyList[vNode][uNode] = 1;
@@ -39,10 +48,5 @@ class Graph{
 };
 
 int main(){
-    Graph* myGraph = new Graph(5);
-    myGraph->printMatrix();
-    myGraph->addEdge(0, 1);
-    myGraph->printMatrix();
-    myGraph->addEdge(2, 1);
-    myGraph->printMatrix();
+
 }
