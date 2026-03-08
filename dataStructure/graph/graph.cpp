@@ -7,12 +7,14 @@ class Graph{
         int vertexNumber;
         int** adjacencyMatrix;
         bool isDirected;
+        bool isWeighted;
 
     public:
-        Graph(int vertices, bool isDirected){
+        Graph(int vertices, bool isDirected, bool isWeighted){
             this->vertexNumber = vertices;
             this->adjacencyMatrix = new int*[vertexNumber];   
             this->isDirected = isDirected;
+            this->isWeighted = isWeighted;
             for(int i = 0; i < vertexNumber; i++) {
                 this->adjacencyMatrix[i] = new int[vertexNumber];
             }
@@ -28,13 +30,21 @@ class Graph{
             }
             delete[] adjacencyMatrix;
         }
-        void addEdge(int uNode, int vNode){
+        void addEdge(int uNode, int vNode, int weight = 1){
             if (uNode < 0 || vNode < 0 || uNode >= this->vertexNumber || vNode >= this->vertexNumber){
                 return;
             }else{
-                adjacencyMatrix[uNode][vNode] = 1;
-                if (!isDirected){
-                    adjacencyMatrix[vNode][uNode] = 1;
+                if (this->isWeighted){
+                    adjacencyMatrix[uNode][vNode] = weight;
+                }else{
+                    adjacencyMatrix[uNode][vNode] = 1;
+                }
+                if (!this->isDirected){
+                    if (this->isWeighted){
+                        adjacencyMatrix[vNode][uNode] = weight;
+                    }else{
+                        adjacencyMatrix[vNode][uNode] = 1;
+                    }
                 }
             }
         }
@@ -44,7 +54,7 @@ class Graph{
                 return;
             }else{
                 adjacencyMatrix[uNode][vNode] = 0;
-                if (!isDirected){
+                if (!this->isDirected){
                     adjacencyMatrix[vNode][uNode] = 0;
                 }
             }
@@ -62,11 +72,24 @@ class Graph{
 };
 
 int main(){
-    Graph* myGraph1 = new Graph(5, true);
-    myGraph1->addEdge(0,1);
-    myGraph1->printMatrix();
+    Graph* weightedDirectional = new Graph(5, true, true);
+    weightedDirectional->addEdge(0,1, 5);
+    weightedDirectional->addEdge(2,3, 3);
+    weightedDirectional->printMatrix();
     cout << "--------------------------" << endl;
-    Graph* myGraph2 = new Graph(5, false);
-    myGraph2->addEdge(0,1);
-    myGraph2->printMatrix();
+    Graph* weightedUndirectional = new Graph(5, false, true);
+    weightedUndirectional->addEdge(0,1, 5);
+    weightedUndirectional->addEdge(2,3, 3);
+    weightedUndirectional->printMatrix();
+    cout << "--------------------------" << endl;
+    Graph* unweightedDirectional = new Graph(5, true, false);
+    unweightedDirectional->addEdge(0,1);
+    unweightedDirectional->addEdge(2,3);
+    unweightedDirectional->printMatrix();
+    cout << "--------------------------" << endl;
+    Graph* unweightedUndirectional = new Graph(5, false, false);
+    unweightedUndirectional->addEdge(0,1);
+    unweightedUndirectional->addEdge(2,3);
+    unweightedUndirectional->printMatrix();
+    cout << "--------------------------" << endl;
 }
