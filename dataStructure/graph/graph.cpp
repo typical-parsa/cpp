@@ -37,3 +37,12 @@ class Graph{
             }
         }
 };
+
+int main(){
+    Graph* myGraph = new Graph(5);
+    myGraph->printMatrix();
+    myGraph->addEdge(0, 1);
+    myGraph->printMatrix();
+    myGraph->addEdge(2, 1);
+    myGraph->printMatrix();
+}
