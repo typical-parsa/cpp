@@ -27,8 +27,12 @@ class Graph{
             delete[] adjacencyList;
         }
         void addEdge(int uNode, int vNode){
-            adjacencyList[uNode][vNode] = 1;
-            adjacencyList[vNode][uNode] = 1;
+            if (uNode < 0 || vNode < 0 || uNode >= this->vertexNumber || uNode >= this->vertexNumber){
+                return;
+            }else{
+                adjacencyList[uNode][vNode] = 1;
+                adjacencyList[vNode][uNode] = 1;
+            }
         }
 
         void removeEdge(int uNode, int vNode){
@@ -48,5 +52,5 @@ class Graph{
 };
 
 int main(){
-    
+
 }
