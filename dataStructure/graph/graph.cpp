@@ -92,4 +92,8 @@ int main(){
     unweightedUndirectional->addEdge(2,3);
     unweightedUndirectional->printMatrix();
     cout << "--------------------------" << endl;
+    delete weightedDirectional;
+    delete weightedUndirectional;
+    delete unweightedDirectional;
+    delete unweightedUndirectional;
 }
