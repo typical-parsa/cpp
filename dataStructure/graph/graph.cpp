@@ -26,4 +26,14 @@ class Graph{
             adjacencyList[uNode][vNode] = 0;
             adjacencyList[vNode][uNode] = 0;
         }
+
+        void printMatrix(){
+            cout << "Adjacency Matrix: " << endl;
+            for (int i = 0 ; i < this->vertexNumber ; i++){
+                for (int j = 0 ; j < this->vertexNumber ; j++){
+                    cout << adjacencyList[i][j] << " ";
+                }
+                cout << endl;
+            }
+        }
 };
