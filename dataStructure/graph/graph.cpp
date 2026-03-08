@@ -18,6 +18,11 @@ class Graph{
         }
 
         void addEdge(int uNode, int vNode){
+            adjacencyList[uNode][vNode] = 1;
+            adjacencyList[vNode][uNode] = 1;
+        }
+
+        void removeEdge(int uNode, int vNode){
             adjacencyList[uNode][vNode] = 0;
             adjacencyList[vNode][uNode] = 0;
         }
