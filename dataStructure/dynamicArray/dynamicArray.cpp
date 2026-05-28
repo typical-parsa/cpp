@@ -17,12 +17,10 @@ class DynamicArray{
                 newCapacity = this->capacity * 2;
             }
             int* newArrayUnderHood = new int[newCapacity];
-            if (this->arrayUnderHood != nullptr){
-                for(int i = 0 ; i < this->length ; i++){
-                    newArrayUnderHood[i] = this->arrayUnderHood[i];
-                }
-                delete[] this->arrayUnderHood;
+            for (int i = 0 ; i < this->length ; i++){
+                newArrayUnderHood[i] = this->arrayUnderHood[i];
             }
+            delete[] this->arrayUnderHood;
             this->arrayUnderHood = newArrayUnderHood;
             this->capacity = newCapacity;
         }
@@ -63,9 +61,7 @@ class DynamicArray{
         }
 
         int atIndex(int index){
-            if (this->length == 0){
-                return INT_MIN;
-            }else if (index < 0 || index >= this->length){
+            if (index < 0 || index >= this->length){
                 return INT_MIN;
             }else{
                 return this->arrayUnderHood[index];
@@ -74,5 +70,5 @@ class DynamicArray{
 };
 
 int main(){
-    
+
 }
