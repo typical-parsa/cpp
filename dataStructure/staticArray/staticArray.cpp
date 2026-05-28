@@ -37,7 +37,7 @@ bool prepend(int arr[], int &size, int capacity, int value){
         return false;
     }
     for (int i = size ; i > 0 ; i--){
-        arr[i] = arr[i - 1];
+        arr[i] = arr[i-1];
     }
     arr[0] = value;
     size++;
@@ -57,19 +57,19 @@ bool deleteFirst(int arr[], int &size){
         return false;
     }
     for (int i = 0 ; i < size - 1 ; i++){
-        arr[i] = arr[i + 1];
+        arr[i] = arr[i+1];
     }
     size--;
     return true;
 }
 
-bool insertAt(int arr[], int &size, int capacity, int index ,int value){
+bool insertAt(int arr[], int &size, int capacity,int index, int value){
     if (size >= capacity){
         return false;
     }else if (index < 0 || index > size){
         return false;
     }else{
-        for (int i = size ; i > index; i--){
+        for (int i = size ; i > index ; i--){
             arr[i] = arr[i - 1];
         }
         arr[index] = value;
@@ -84,8 +84,8 @@ bool deleteAt(int arr[], int &size, int capacity, int index){
     }else if (index < 0 || index >= size){
         return false;
     }else{
-        for (int i = index ; i < size - 1; i++){
-            arr[i] = arr[i + 1];
+        for (int i = index ; i < size - 1 ; i++){
+            arr[i] = arr[i+1];
         }
         size--;
         return true;
