@@ -14,3 +14,11 @@ bool appendElement(int arr[], int &size, int capacity, int value){
     size++;
     return true;
 }
+
+bool deleteLastElement(int arr[], int &size){
+    if (size == 0){
+        return false;
+    }
+    size--;
+    return true;
+}
