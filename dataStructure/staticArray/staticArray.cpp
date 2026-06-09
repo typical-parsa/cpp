@@ -2,6 +2,8 @@
 
 using namespace std;
 
+
+
 int main(){
 
 }
@@ -39,7 +41,7 @@ bool deleteFirstElement(int arr[], int &size){
     if (size == 0){
         return false;
     }
-    for(int i = 0 ; i < size ; i++){
+    for(int i = 0 ; i < size - 1 ; i++){
         arr[i] = arr[i+1];
     }
     size--;
@@ -58,4 +60,18 @@ bool insertElement(int arr[], int &size, int capacity, int value, int index){
     arr[index] = value;
     size++;
     return true;
+}
+
+bool deleteElement(int arr[], int &size, int index){
+    if (size == 0){
+        return false;
+    }else if (index < 0 || index >= size){
+        return false;
+    }
+    for (int i = index ; i < size - 1 ; i++){
+        arr[i] = arr[i + 1];
+    }
+    size--;
+    return true;
+
 }
