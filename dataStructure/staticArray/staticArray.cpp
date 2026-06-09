@@ -45,3 +45,17 @@ bool deleteFirstElement(int arr[], int &size){
     size--;
     return true;
 }
+
+bool insertElement(int arr[], int &size, int capacity, int value, int index){
+    if (size >= capacity){
+        return false;
+    }else if (index < 0 || index > size){
+        return false;
+    }
+    for (int i = size ; i > index ; i--){
+        arr[i] = arr[i-1];
+    }
+    arr[index] = value;
+    size++;
+    return true;
+}
