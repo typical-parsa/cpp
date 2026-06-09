@@ -2,7 +2,12 @@
 
 using namespace std;
 
-
+bool appendElement(int arr[], int &size, int capacity, int value);
+bool deleteLastElement(int arr[], int &size);
+bool prependElement(int arr[], int &size, int capacity, int value);
+bool deleteFirstElement(int arr[], int &size);
+bool insertElement(int arr[], int &size, int capacity, int value, int index);
+bool deleteElement(int arr[], int &size, int index);
 
 int main(){
 
