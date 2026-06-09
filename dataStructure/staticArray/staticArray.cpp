@@ -34,3 +34,14 @@ bool prependElement(int arr[], int &size, int capacity, int value){
     size++;
     return true;
 }
+
+bool deleteFirstElement(int arr[], int &size){
+    if (size == 0){
+        return false;
+    }
+    for(int i = 0 ; i < size ; i++){
+        arr[i] = arr[i+1];
+    }
+    size--;
+    return true;
+}
