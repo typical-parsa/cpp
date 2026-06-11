@@ -1,4 +1,5 @@
 #include <iostream>
+#include <climits>
 
 using namespace std;
 
@@ -43,6 +44,15 @@ class dynamicArray{
             }
             this->arrayUnderHood[this->length] = value;
             this->length++;
+            return true;
+        }
+
+        int popElement(){
+            if (this->length == 0){
+                return INT_MIN;
+            }
+            int poppedValue = this->arrayUnderHood[this->length - 1];
+            this->length--;
             return true;
         }
 };
