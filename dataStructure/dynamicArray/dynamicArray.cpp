@@ -66,7 +66,11 @@ class dynamicArray{
             return this->arrayUnderHood[index];
         }
 
-        int size(){
+        int getSize(){
             return this->length;
+        }
+
+        int getCapacity(){
+            return this->capacity;
         }
 };
