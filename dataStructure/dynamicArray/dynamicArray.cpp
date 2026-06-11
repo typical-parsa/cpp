@@ -23,4 +23,11 @@ class dynamicArray{
             this->arrayUnderHood = newArrayUnderHood;
             this->capacity = newCapacity;
         }
+
+    public:
+        dynamicArray(){
+            this->arrayUnderHood = nullptr;
+            this->length = 0;
+            this->capacity = 0;
+        }
 };
