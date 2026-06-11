@@ -38,6 +38,16 @@ class dynamicArray{
             this->capacity = 0;
         }
 
+        void printList(){
+            if (this->length == 0){
+                return;
+            }
+            for (int i = 0 ; i < this->length ; i++){
+                cout << this->arrayUnderHood[i] << " ";
+            }
+            cout << endl;
+        }
+
         bool pushElement(int value){
             if (this->length >= this->capacity){
                 this->resize();
