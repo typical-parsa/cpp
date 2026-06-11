@@ -88,4 +88,18 @@ class dynamicArray{
             this->length++;
             return true;
         }
+
+        bool deleteAt(int index){
+            if (this->length == 0){
+                return false;
+            }
+            if (index < 0 || index >= this->length){
+                return false;
+            }
+            for (int i = index ; i < length ; i++){
+                this->arrayUnderHood[i] = this->arrayUnderHood[i + 1];
+            }
+            this->length--;
+            return true;
+        }
 };
