@@ -53,7 +53,7 @@ class dynamicArray{
             }
             int poppedValue = this->arrayUnderHood[this->length - 1];
             this->length--;
-            return true;
+            return poppedValue;
         }
 
         int atIndex(int index){
@@ -64,5 +64,9 @@ class dynamicArray{
                 return INT_MIN;
             }
             return this->arrayUnderHood[index];
+        }
+
+        int size(){
+            return this->length;
         }
 };
