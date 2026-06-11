@@ -73,4 +73,19 @@ class dynamicArray{
         int getCapacity(){
             return this->capacity;
         }
+
+        bool insertAt(int index, int value){
+            if (this->length >= this->capacity){
+                return false;
+            }
+            if (index < 0 || index > this->length){
+                return false;
+            }
+            for (int i = this->length ; i > length ; i--){
+                this->arrayUnderHood[i] = this->arrayUnderHood[i - 1];
+            }
+            this->arrayUnderHood[index] = value;
+            this->length++;
+            return true;
+        }
 };
