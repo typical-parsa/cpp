@@ -30,4 +30,10 @@ class dynamicArray{
             this->length = 0;
             this->capacity = 0;
         }
+
+        ~dynamicArray(){
+            delete[] this->arrayUnderHood;
+            this->length = 0;
+            this->capacity = 0;
+        }
 };
