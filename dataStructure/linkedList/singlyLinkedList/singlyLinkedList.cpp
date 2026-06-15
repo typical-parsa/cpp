@@ -49,4 +49,19 @@ class SLL{
             this->length++;
             return true;
         }
+
+        bool deleteFirstNode(){
+            if (this->length == 0){
+                return false;
+            }
+            Node* tempNode = this->head;
+            if (this->length == 1){
+                this->head = nullptr;
+                this->tail = nullptr
+            }else{
+                this->head = this->head->next;   
+            }
+            this->length--;
+            return true;
+        }
 };
