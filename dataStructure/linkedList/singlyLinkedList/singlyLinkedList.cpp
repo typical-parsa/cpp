@@ -50,18 +50,25 @@ class SLL{
             return true;
         }
 
-        bool deleteFirstNode(){
+        bool deleteLastNode(){
             if (this->length == 0){
                 return false;
             }
             Node* tempNode = this->head;
             if (this->length == 1){
                 this->head = nullptr;
-                this->tail = nullptr
+                this->tail = nullptr;
             }else{
-                this->head = this->head->next;   
+                Node* previousNode = tempNode;
+                while (tempNode->next != nullptr){
+                    previousNode = tempNode;
+                    tempNode = tempNode->next;
+                }
+                this->tail = previousNode;
+                this->tail->next = nullptr;
             }
             this->length--;
+            delete tempNode;
             return true;
         }
 
@@ -75,6 +82,21 @@ class SLL{
                 this->head = newNode;
             }
             this->length++;
+            return true;
+        }
+
+        bool deleteFirstNode(){
+            if (this->length == 0){
+                return false;
+            }
+            Node* tempNode = this->head;
+            if (this->length == 1){
+                this->head = nullptr;
+                this->tail = nullptr
+            }else{
+                this->head = this->head->next;   
+            }
+            this->length--;
             return true;
         }
 };
