@@ -99,4 +99,24 @@ class SLL{
             this->length--;
             return true;
         }
+
+        bool insertNodeAt(int index, int value){
+            if (index < 0 || index > this->length){
+                return false;
+            }else if (index == 0){
+                return this->prependNode(value);
+            }else if (index == this->length){
+                return this->appendNOde(value);
+            }else{
+                Node* newNode = new Node(value);
+                Node* tempNode = this->head;
+                for (int i = 0 ; i < index - 1; i++){
+                    tempNode = tempNode->next;
+                }
+                newNode->next = tempNode->next;
+                tempNode->next = newNode;
+            }
+            this->length++;
+            return true;
+        }
 };
