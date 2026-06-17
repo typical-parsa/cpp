@@ -53,6 +53,20 @@ class SLL{
             cout << endl;
         }
 
+        Node* getNodeByIndex(int index){
+            if (this->length == 0){
+                return nullptr;
+            }
+            if (index < 0 || index >= this->length){
+                return nullptr;
+            }
+            Node* tempNode = this->head;
+            for (int i = 0 ; i < index ; i++){
+                tempNode = tempNode->next;
+            }
+            return tempNode;
+        }
+
         bool appendNode(int value){
             Node* newNode = new Node(value);
             if (this->length == 0){
