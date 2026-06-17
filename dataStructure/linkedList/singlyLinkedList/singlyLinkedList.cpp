@@ -187,4 +187,22 @@ class SLL{
                 return false;
             }
         }
+
+        bool reverseList(){
+            if (this->length <= 1){
+                return true;
+            }
+            Node* currentNode = this->head;
+            Node* previousNode = nullptr;
+            Node* nextNode = nullptr;
+            this->head = this->tail;
+            this->tail = currentNode;
+            while (currentNode != nullptr){
+                nextNode = currentNode->next;
+                currentNode->next = previousNode;
+                previousNode = currentNode;
+                currentNode = nextNode;
+            }
+            return true;
+        }
 };
