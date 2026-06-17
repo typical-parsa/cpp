@@ -48,7 +48,7 @@ class SLL{
             Node* tempNode = this->head;
             while (tempNode != nullptr){
                 cout << tempNode->value << " ";
-                tempNode = tempNOde->next;
+                tempNode = tempNode->next;
             }
             cout << endl;
         }
@@ -65,6 +65,21 @@ class SLL{
                 tempNode = tempNode->next;
             }
             return tempNode;
+        }
+
+        bool setNodeValue(int index, int value){
+            if (this->length == 0){
+                return false;
+            }
+            if (index < 0 || index >= this->length){
+                return false;
+            }
+            Node* tempNode = this->getNodeByIndex(index);
+            if (tempNode != nullptr){
+                tempNode->value = value;
+            }else{
+                return false;
+            }
         }
 
         bool appendNode(int value){
