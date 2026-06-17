@@ -92,30 +92,33 @@ class SLL{
             Node* tempNode = this->head;
             if (this->length == 1){
                 this->head = nullptr;
-                this->tail = nullptr
+                this->tail = nullptr;
             }else{
                 this->head = this->head->next;   
             }
             this->length--;
+            delete tempNode;
             return true;
         }
 
         bool insertNodeAt(int index, int value){
             if (index < 0 || index > this->length){
                 return false;
-            }else if (index == 0){
-                return this->prependNode(value);
-            }else if (index == this->length){
-                return this->appendNOde(value);
-            }else{
-                Node* newNode = new Node(value);
-                Node* tempNode = this->head;
-                for (int i = 0 ; i < index - 1; i++){
-                    tempNode = tempNode->next;
-                }
-                newNode->next = tempNode->next;
-                tempNode->next = newNode;
             }
+            if (index == 0){
+                return this->prependNode(value);
+            }
+            if (index == this->length){
+                return this->appendNode(value);
+            }
+
+            Node* newNode = new Node(value);
+            Node* tempNode = this->head;
+            for (int i = 0 ; i < index - 1; i++){
+                tempNode = tempNode->next;
+            }
+            newNode->next = tempNode->next;
+            tempNode->next = newNode;
             this->length++;
             return true;
         }
