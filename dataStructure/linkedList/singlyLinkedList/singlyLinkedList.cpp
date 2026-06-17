@@ -37,6 +37,18 @@ class SLL{
             this->length = 0;
         }
 
+        void printList(){
+            if (this->length == 0){
+                return;
+            }
+            Node* tempNode = this->head;
+            while (tempNode != nullptr){
+                cout << tempNode->value << " ";
+                tempNode = tempNOde->next;
+            }
+            cout << endl;
+        }
+
         bool appendNode(int value){
             Node* newNode = new Node(value);
             if (this->length == 0){
