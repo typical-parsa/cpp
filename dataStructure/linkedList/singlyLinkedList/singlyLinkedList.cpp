@@ -54,9 +54,6 @@ class SLL{
         }
 
         Node* getNodeByIndex(int index){
-            if (this->length == 0){
-                return nullptr;
-            }
             if (index < 0 || index >= this->length){
                 return nullptr;
             }
@@ -68,15 +65,13 @@ class SLL{
         }
 
         bool setNodeValue(int index, int value){
-            if (this->length == 0){
-                return false;
-            }
             if (index < 0 || index >= this->length){
                 return false;
             }
             Node* tempNode = this->getNodeByIndex(index);
             if (tempNode != nullptr){
                 tempNode->value = value;
+                return true;    
             }else{
                 return false;
             }
@@ -165,5 +160,31 @@ class SLL{
             tempNode->next = newNode;
             this->length++;
             return true;
+        }
+
+        bool deleteNodeAt(int index){
+            if (this->length == 0){
+                return false;
+            }
+            if (index < 0 || index >= this->length){
+                return false;
+            }
+            if (index == 0){
+                return this->deleteFirstNode();
+            }
+            if (index == this->length - 1){
+                return this->deleteLastNode();
+            }
+            Node* previousNode = this->getNodeByIndex(index - 1);
+            if (previousNode != nullptr){
+                Node* tempNode = previousNode->next;
+                Node* nextNode = tempNode->next;
+                previousNode->next = nextNode;
+                delete tempNode;
+                this->length--;
+                return true;
+            }else{
+                return false;
+            }
         }
 };
