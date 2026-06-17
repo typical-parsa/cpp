@@ -37,6 +37,10 @@ class SLL{
             this->length = 0;
         }
 
+        int getLength(){
+            return this->length;
+        }
+
         void printList(){
             if (this->length == 0){
                 return;
@@ -123,7 +127,6 @@ class SLL{
             if (index == this->length){
                 return this->appendNode(value);
             }
-
             Node* newNode = new Node(value);
             Node* tempNode = this->head;
             for (int i = 0 ; i < index - 1; i++){
