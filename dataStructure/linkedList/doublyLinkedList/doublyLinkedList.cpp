@@ -1,0 +1,17 @@
+#include <iostream>
+
+using namespace std;
+
+class Node{
+    public:
+        int value;
+        Node* next;
+        Node* previous;
+
+    Node(int value){
+        this->value = value;
+        this->next = nullptr;
+        this->previous = nullptr;
+    }
+};
+
