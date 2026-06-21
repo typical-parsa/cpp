@@ -102,23 +102,35 @@ class DoublyLinkedList{
         Node* GetNodeByIndex(int index){
             if (this->length == 0){
                 return nullptr;
-            }else if (index < 0 || index >= this->length){
-                return false;
-            }else{
-                Node* tempNode;
-                if (this->length / 2 > index){
-                    tempNode = this->head;
-                    for (int i = 0 ; i < index ; i++){
-                        tempNode = tempNode->next;
-                    }
-                }else{
-                    tempNode = this->tail;
-                    for (int i = this->length - 1 ; i > index ; i--){
-                        tempNode = tempNode->previous;
-                    }
-                }
-                return tempNode;
             }
+            if (index < 0 || index >= this->length){
+                return false;
+            }
+            Node* tempNode;
+            if (this->length / 2 > index){
+                tempNode = this->head;
+                for (int i = 0 ; i < index ; i++){
+                    tempNode = tempNode->next;
+                }
+            }else{
+                tempNode = this->tail;
+                for (int i = this->length - 1 ; i > index ; i--){
+                    tempNode = tempNode->previous;
+                }
+            }
+        return tempNode;        
+        }
+
+        bool SetNodeValueByIndex(int index, int value){
+            if (this->length == 0){
+                return false;
+            }
+            if (index < 0 || index >= this->length){
+                return false;
+            }
+            Node* tempNode = this->GetNodeByIndex(index);
+            tempNode->value = value;
+            return true;
         }
 };
 
