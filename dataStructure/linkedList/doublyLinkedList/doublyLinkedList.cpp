@@ -153,6 +153,29 @@ class DoublyLinkedList{
             this->length++;
             return true;
         }
+
+        bool DeleteNodeAt(int index){
+            if (this->length == 0){
+                return false;
+            }
+            if (index < 0 || index >= this->length){
+                return false;
+            }
+            if (index == 0){
+                return this->DeleteFirstNode();
+            }
+            if (index == this->length - 1){
+                return this->DeleteLastNode();
+            }
+            Node* tempNode = this->GetNodeByIndex(index);
+            Node* previousNode = tempNode->previous;
+            Node* nextNode = tempNode->next;
+            previousNode->next = nextNode;
+            nextNode->previous = previousNode;
+            this->length--;
+            delete tempNode;
+            return true;
+        }
 };
 
 
