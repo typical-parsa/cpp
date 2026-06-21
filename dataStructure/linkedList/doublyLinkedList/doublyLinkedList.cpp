@@ -132,6 +132,27 @@ class DoublyLinkedList{
             tempNode->value = value;
             return true;
         }
+
+        bool InsertNodeAt(int index, int value){
+            if (index < 0 || index > this->length){
+                return false;
+            }
+            if (index == 0){
+                return this->PrependNode(value);
+            }
+            if (index == this->length){
+                return this->AppendNode(value);
+            }
+            Node* newNode = new Node(value);
+            Node* previousNode = this->GetNodeByIndex(index - 1);
+            Node* nextNode = previousNode->next;
+            newNode->previous = previousNode;
+            previousNode->next = newNode;
+            newNode->next = nextNode;
+            nextNode->previous = newNode;
+            this->length++;
+            return true;
+        }
 };
 
 
