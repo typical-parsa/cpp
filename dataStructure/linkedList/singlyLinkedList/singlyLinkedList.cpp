@@ -1,212 +1,194 @@
 #include <iostream>
+#include "singlyLinkedList.h"
 
 using namespace std;
 
-class Node{
-    public:
-        int value;
-        Node* next;
+Node::Node(int value) {
+    this->value = value;
+    this->next = nullptr;
+}
 
-        Node(int value){
-            this->value = value;
-            this->next = nullptr;
+SinglyLinkedList::SinglyLinkedList(){
+    this->head = nullptr;
+    this->tail = nullptr;
+    this->length = 0;
+    }
+
+SinglyLinkedList::~SinglyLinkedList(){
+    while (this->head != nullptr){
+        Node* tempNode = this->head;
+        this->head = this->head->next;
+        delete tempNode;
+    }
+    this->tail = nullptr;
+    this->length = 0;
+}
+
+int SinglyLinkedList::getLength(){
+    return this->length;
+}
+
+void SinglyLinkedList::printList(){
+    if (this->length == 0){
+        return;
+    }
+    Node* tempNode = this->head;
+    while (tempNode != nullptr){
+        cout << tempNode->value << " ";
+        tempNode = tempNode->next;
+    }
+    cout << endl;
+}
+
+Node* SinglyLinkedList::getNodeByIndex(int index){
+    if (index < 0 || index >= this->length){
+        return nullptr;
+    }
+    Node* tempNode = this->head;
+    for (int i = 0 ; i < index ; i++){
+        tempNode = tempNode->next;
+    }
+    return tempNode;
+}
+
+bool SinglyLinkedList::setNodeValue(int index, int value){
+    if (index < 0 || index >= this->length){
+        return false;
+    }
+    Node* tempNode = this->getNodeByIndex(index);
+    if (tempNode != nullptr){
+        tempNode->value = value;
+        return true;    
+    }else{
+        return false;
+    }
+}
+
+bool SinglyLinkedList::appendNode(int value){
+    Node* newNode = new Node(value);
+    if (this->length == 0){
+        this->head = newNode;
+        this->tail = newNode;
+    }else{
+        this->tail->next = newNode;
+        this->tail = newNode;
+    }
+    this->length++;
+    return true;
+}
+
+bool SinglyLinkedList::deleteLastNode(){
+    if (this->length == 0){
+        return false;
+    }
+    Node* tempNode = this->head;
+    if (this->length == 1){
+        this->head = nullptr;
+        this->tail = nullptr;
+    }else{
+        Node* previousNode = tempNode;
+        while (tempNode->next != nullptr){
+            previousNode = tempNode;
+            tempNode = tempNode->next;
         }
-};
+        this->tail = previousNode;
+        this->tail->next = nullptr;
+    }
+    this->length--;
+    delete tempNode;
+    return true;
+}
 
-class SLL{
-    private:
-        Node* head;
-        Node* tail;
-        int length;
+bool SinglyLinkedList::prependNode(int value){
+    Node* newNode = new Node(value);
+    if (this->length == 0){
+        this->head = newNode;
+        this->tail = newNode;
+    }else{
+        newNode->next = this->head;
+        this->head = newNode;
+    }
+    this->length++;
+    return true;
+}
 
+bool SinglyLinkedList::deleteFirstNode(){
+    if (this->length == 0){
+        return false;
+    }
+    Node* tempNode = this->head;
+    if (this->length == 1){
+        this->head = nullptr;
+        this->tail = nullptr;
+    }else{
+        this->head = this->head->next;   
+    }
+    this->length--;
+    delete tempNode;
+    return true;
+}
 
-    public:
-        SLL(){
-            this->head = nullptr;
-            this->tail = nullptr;
-            this->length = 0;
-        }
+bool SinglyLinkedList::insertNodeAt(int index, int value){
+    if (index < 0 || index > this->length){
+        return false;
+    }
+    if (index == 0){
+        return this->prependNode(value);
+    }
+    if (index == this->length){
+        return this->appendNode(value);
+    }
+    Node* newNode = new Node(value);
+    Node* tempNode = this->head;
+    for (int i = 0 ; i < index - 1; i++){
+        tempNode = tempNode->next;
+    }
+    newNode->next = tempNode->next;
+    tempNode->next = newNode;
+    this->length++;
+    return true;
+}
 
-        ~SLL(){
-            while (this->head != nullptr){
-                Node* tempNode = this->head;
-                this->head = this->head->next;
-                delete tempNode;
-            }
-            this->tail = nullptr;
-            this->length = 0;
-        }
+bool SinglyLinkedList::deleteNodeAt(int index){
+    if (this->length == 0){
+        return false;
+    }
+    if (index < 0 || index >= this->length){
+        return false;
+    }
+    if (index == 0){
+        return this->deleteFirstNode();
+    }
+    if (index == this->length - 1){
+        return this->deleteLastNode();
+    }
+    Node* previousNode = this->getNodeByIndex(index - 1);
+    if (previousNode != nullptr){
+        Node* tempNode = previousNode->next;
+        Node* nextNode = tempNode->next;
+        previousNode->next = nextNode;
+        delete tempNode;
+        this->length--;
+        return true;
+    }else{
+        return false;
+    }
+}
 
-        int getLength(){
-            return this->length;
-        }
-
-        void printList(){
-            if (this->length == 0){
-                return;
-            }
-            Node* tempNode = this->head;
-            while (tempNode != nullptr){
-                cout << tempNode->value << " ";
-                tempNode = tempNode->next;
-            }
-            cout << endl;
-        }
-
-        Node* getNodeByIndex(int index){
-            if (index < 0 || index >= this->length){
-                return nullptr;
-            }
-            Node* tempNode = this->head;
-            for (int i = 0 ; i < index ; i++){
-                tempNode = tempNode->next;
-            }
-            return tempNode;
-        }
-
-        bool setNodeValue(int index, int value){
-            if (index < 0 || index >= this->length){
-                return false;
-            }
-            Node* tempNode = this->getNodeByIndex(index);
-            if (tempNode != nullptr){
-                tempNode->value = value;
-                return true;    
-            }else{
-                return false;
-            }
-        }
-
-        bool appendNode(int value){
-            Node* newNode = new Node(value);
-            if (this->length == 0){
-                this->head = newNode;
-                this->tail = newNode;
-            }else{
-                this->tail->next = newNode;
-                this->tail = newNode;
-            }
-            this->length++;
-            return true;
-        }
-
-        bool deleteLastNode(){
-            if (this->length == 0){
-                return false;
-            }
-            Node* tempNode = this->head;
-            if (this->length == 1){
-                this->head = nullptr;
-                this->tail = nullptr;
-            }else{
-                Node* previousNode = tempNode;
-                while (tempNode->next != nullptr){
-                    previousNode = tempNode;
-                    tempNode = tempNode->next;
-                }
-                this->tail = previousNode;
-                this->tail->next = nullptr;
-            }
-            this->length--;
-            delete tempNode;
-            return true;
-        }
-
-        bool prependNode(int value){
-            Node* newNode = new Node(value);
-            if (this->length == 0){
-                this->head = newNode;
-                this->tail = newNode;
-            }else{
-                newNode->next = this->head;
-                this->head = newNode;
-            }
-            this->length++;
-            return true;
-        }
-
-        bool deleteFirstNode(){
-            if (this->length == 0){
-                return false;
-            }
-            Node* tempNode = this->head;
-            if (this->length == 1){
-                this->head = nullptr;
-                this->tail = nullptr;
-            }else{
-                this->head = this->head->next;   
-            }
-            this->length--;
-            delete tempNode;
-            return true;
-        }
-
-        bool insertNodeAt(int index, int value){
-            if (index < 0 || index > this->length){
-                return false;
-            }
-            if (index == 0){
-                return this->prependNode(value);
-            }
-            if (index == this->length){
-                return this->appendNode(value);
-            }
-            Node* newNode = new Node(value);
-            Node* tempNode = this->head;
-            for (int i = 0 ; i < index - 1; i++){
-                tempNode = tempNode->next;
-            }
-            newNode->next = tempNode->next;
-            tempNode->next = newNode;
-            this->length++;
-            return true;
-        }
-
-        bool deleteNodeAt(int index){
-            if (this->length == 0){
-                return false;
-            }
-            if (index < 0 || index >= this->length){
-                return false;
-            }
-            if (index == 0){
-                return this->deleteFirstNode();
-            }
-            if (index == this->length - 1){
-                return this->deleteLastNode();
-            }
-            Node* previousNode = this->getNodeByIndex(index - 1);
-            if (previousNode != nullptr){
-                Node* tempNode = previousNode->next;
-                Node* nextNode = tempNode->next;
-                previousNode->next = nextNode;
-                delete tempNode;
-                this->length--;
-                return true;
-            }else{
-                return false;
-            }
-        }
-
-        bool reverseList(){
-            if (this->length <= 1){
-                return true;
-            }
-            Node* currentNode = this->head;
-            Node* previousNode = nullptr;
-            Node* nextNode = nullptr;
-            this->head = this->tail;
-            this->tail = currentNode;
-            while (currentNode != nullptr){
-                nextNode = currentNode->next;
-                currentNode->next = previousNode;
-                previousNode = currentNode;
-                currentNode = nextNode;
-            }
-            return true;
-        }
-};
-
-int main(){
-    
+bool SinglyLinkedList::reverseList(){
+    if (this->length <= 1){
+        return true;
+    }
+    Node* currentNode = this->head;
+    Node* previousNode = nullptr;
+    Node* nextNode = nullptr;
+    this->head = this->tail;
+    this->tail = currentNode;
+    while (currentNode != nullptr){
+        nextNode = currentNode->next;
+        currentNode->next = previousNode;
+        previousNode = currentNode;
+        currentNode = nextNode;
+    }
+    return true;
 }
