@@ -1,115 +1,103 @@
 #include <iostream>
 #include <climits>
+#include "dynamicArray.h"
 
 using namespace std;
 
-class dynamicArray{
-    private:
-        int length;
-        int capacity;
-        int* arrayUnderHood;
+void dynamicArray::resize() {
+    int newCapacity;
+    if (this->capacity == 0){
+        newCapacity = 1;
+    }else{
+        newCapacity = this->capacity * 2;
+    }
+    int* newArray = new int[newCapacity];
+    for (int i = 0; i < this->length; i++) {
+        newArray[i] = this->arrayUnderHood[i];
+    }
+    delete[] this->arrayUnderHood;
+    this->arrayUnderHood = newArray;
+    this->capacity = newCapacity;
+}
 
-        void resize(){
-            int newCapacity;
-            if (this->capacity == 0){
-                newCapacity = 1;
-            }else{
-                newCapacity = this->capacity * 2;
-            }
-            int* newArrayUnderHood = new int[newCapacity];
-            for (int i = 0 ; i < this->length ; i++){
-                newArrayUnderHood[i] = this->arrayUnderHood[i];
-            }
-            delete[] this->arrayUnderHood;
-            this->arrayUnderHood = newArrayUnderHood;
-            this->capacity = newCapacity;
-        }
+dynamicArray::dynamicArray() {
+    this->arrayUnderHood = nullptr;
+    this->length = 0;
+    this->capacity = 0;
+}
 
-    public:
-        dynamicArray(){
-            this->arrayUnderHood = nullptr;
-            this->length = 0;
-            this->capacity = 0;
-        }
+dynamicArray::~dynamicArray() {
+    delete[] this->arrayUnderHood;
+    this->arrayUnderHood = nullptr;
+    this->length = 0;
+    this->capacity = 0;
+}
 
-        ~dynamicArray(){
-            delete[] this->arrayUnderHood;
-            this->length = 0;
-            this->capacity = 0;
-        }
+void dynamicArray::printList(){
+    if (this->length == 0){
+        return;
+    }
+    for (int i = 0 ; i < this->length ; i++){
+        cout << this->arrayUnderHood[i] << " ";
+    }
+    cout << endl;
+}
 
-        void printList(){
-            if (this->length == 0){
-                return;
-            }
-            for (int i = 0 ; i < this->length ; i++){
-                cout << this->arrayUnderHood[i] << " ";
-            }
-            cout << endl;
-        }
+bool dynamicArray::pushElement(int value) {
+    if (this->length >= this->capacity) {
+        resize();
+    }
+    this->arrayUnderHood[this->length] = value;
+    this->length++;
+    return true;
+}
 
-        bool pushElement(int value){
-            if (this->length >= this->capacity){
-                this->resize();
-            }
-            this->arrayUnderHood[this->length] = value;
-            this->length++;
-            return true;
-        }
+int dynamicArray::popElement() {
+    if (this->length == 0){
+        return INT_MIN;
+    }
+    int value = this->arrayUnderHood[this->length - 1];
+    this->length--;
+    return value;
+}
 
-        int popElement(){
-            if (this->length == 0){
-                return INT_MIN;
-            }
-            int poppedValue = this->arrayUnderHood[this->length - 1];
-            this->length--;
-            return poppedValue;
-        }
+int dynamicArray::atIndex(int index) {
+    if (index < 0 || index >= this->length){
+        return INT_MIN;
+    } 
+    return this->arrayUnderHood[index];
+}
 
-        int atIndex(int index){
-            if (this->length == 0){
-                return INT_MIN;
-            }
-            if (index < 0 || index >= this->length){
-                return INT_MIN;
-            }
-            return this->arrayUnderHood[index];
-        }
+int dynamicArray::getSize() {
+    return this->length;
+}
 
-        int getSize(){
-            return this->length;
-        }
+int dynamicArray::getCapacity() {
+    return this->capacity;
+}
 
-        int getCapacity(){
-            return this->capacity;
-        }
+bool dynamicArray::insertAt(int index, int value) {
+    if (index < 0 || index > this->length){
+        return false;
+    } 
+    if (this->length >= this->capacity) {
+        resize();
+    }
+    for (int i = this->length; i > index; i--) {
+        this->arrayUnderHood[i] = this->arrayUnderHood[i - 1];
+    }
+    this->arrayUnderHood[index] = value;
+    this->length++;
+    return true;
+}
 
-        bool insertAt(int index, int value){
-            if (this->length >= this->capacity){
-                return false;
-            }
-            if (index < 0 || index > this->length){
-                return false;
-            }
-            for (int i = this->length ; i > length ; i--){
-                this->arrayUnderHood[i] = this->arrayUnderHood[i - 1];
-            }
-            this->arrayUnderHood[index] = value;
-            this->length++;
-            return true;
-        }
-
-        bool deleteAt(int index){
-            if (this->length == 0){
-                return false;
-            }
-            if (index < 0 || index >= this->length){
-                return false;
-            }
-            for (int i = index ; i < length ; i++){
-                this->arrayUnderHood[i] = this->arrayUnderHood[i + 1];
-            }
-            this->length--;
-            return true;
-        }
-};
+bool dynamicArray::deleteAt(int index) {
+    if (index < 0 || index >= this->length){
+        return false;
+    }
+    for (int i = index; i < this->length - 1; i++) {
+        this->arrayUnderHood[i] = this->arrayUnderHood[i + 1];
+    }
+    this->length--;
+    return true;
+}
