@@ -37,7 +37,7 @@ class DoublyLinkedList{
             this->length = 0;
         }
 
-        bool appendNode(int value){
+        bool AppendNode(int value){
             Node* newNode = new Node(value);
             if (this->length == 0){
                 this->head = newNode;
@@ -51,7 +51,7 @@ class DoublyLinkedList{
             return true;
         }
 
-        bool deleteLastNode(){
+        bool DeleteLastNode(){
             if (this->length == 0){
                 return false;
             }
@@ -68,7 +68,7 @@ class DoublyLinkedList{
             return true;
         }
 
-        bool prependNode(int value){
+        bool PrependNode(int value){
             Node* newNode = new Node(value);
             if (this->length == 0){
                 this->head = newNode;
@@ -82,7 +82,7 @@ class DoublyLinkedList{
             return true;
         }
 
-        bool deleteFirstNode(){
+        bool DeleteFirstNode(){
             if (this->length == 0){
                 return false;
             }
@@ -97,6 +97,28 @@ class DoublyLinkedList{
             this->length--;
             delete tempNode;
             return true;
+        }
+
+        Node* GetNodeByIndex(int index){
+            if (this->length == 0){
+                return nullptr;
+            }else if (index < 0 || index >= this->length){
+                return false;
+            }else{
+                Node* tempNode;
+                if (this->length / 2 > index){
+                    tempNode = this->head;
+                    for (int i = 0 ; i < index ; i++){
+                        tempNode = tempNode->next;
+                    }
+                }else{
+                    tempNode = this->tail;
+                    for (int i = this->length - 1 ; i > index ; i--){
+                        tempNode = tempNode->previous;
+                    }
+                }
+                return tempNode;
+            }
         }
 };
 
