@@ -15,3 +15,26 @@ class Node{
     }
 };
 
+class DoublyLinkedList{
+    private:
+        Node* head;
+        Node* tail;
+        int length;
+    public:
+        DoublyLinkedList(){
+            this->head = nullptr;
+            this->tail = nullptr;
+            this->length = 0;
+        }
+
+        ~DoublyLinkedList(){
+            while (this->head != nullptr){
+                Node* tempNode this->head;
+                this->head = this->head->next;
+                delete tempNode;
+            }
+            this->tail = nullptr;
+            this->length = 0;
+        }
+};
+
